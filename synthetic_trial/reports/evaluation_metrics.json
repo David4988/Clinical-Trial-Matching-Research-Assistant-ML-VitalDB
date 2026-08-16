@@ -1,0 +1,112 @@
+{
+  "evaluation_setup": {
+    "train_patients": 250,
+    "eval_patients": 250,
+    "train_windows": 36000,
+    "eval_windows": 36000
+  },
+  "overall_physiological_metrics": {
+    "total_windows": 35607,
+    "true_positives": 1895,
+    "false_positives": 1502,
+    "true_negatives": 26360,
+    "false_negatives": 5850,
+    "precision": 0.5578,
+    "recall_detection_rate": 0.2447,
+    "f1": 0.3402,
+    "false_positive_rate": 0.0539
+  },
+  "scenario_metrics": {
+    "RECOVERY": {
+      "total_windows": 4608,
+      "true_positives": 198,
+      "false_positives": 350,
+      "true_negatives": 2722,
+      "false_negatives": 1338,
+      "precision": 0.3613,
+      "recall_detection_rate": 0.1289,
+      "f1": 0.19,
+      "false_positive_rate": 0.1139
+    },
+    "STABLE": {
+      "total_windows": 9648,
+      "true_positives": 0,
+      "false_positives": 591,
+      "true_negatives": 9057,
+      "false_negatives": 0,
+      "precision": 0.0,
+      "recall_detection_rate": 0.0,
+      "f1": 0.0,
+      "false_positive_rate": 0.0613
+    },
+    "GRADUAL_DETERIORATION": {
+      "total_windows": 4608,
+      "true_positives": 701,
+      "false_positives": 0,
+      "true_negatives": 0,
+      "false_negatives": 3907,
+      "precision": 1.0,
+      "recall_detection_rate": 0.1521,
+      "f1": 0.2641,
+      "false_positive_rate": 0.0
+    },
+    "ADVERSE_EVENT": {
+      "total_windows": 5616,
+      "true_positives": 438,
+      "false_positives": 319,
+      "true_negatives": 4858,
+      "false_negatives": 1,
+      "precision": 0.5786,
+      "recall_detection_rate": 0.9977,
+      "f1": 0.7324,
+      "false_positive_rate": 0.0616
+    },
+    "DATA_QUALITY_FAILURE": {
+      "total_windows": 2775,
+      "true_positives": 0,
+      "false_positives": 111,
+      "true_negatives": 2664,
+      "false_negatives": 0,
+      "precision": 0.0,
+      "recall_detection_rate": 0.0,
+      "f1": 0.0,
+      "false_positive_rate": 0.04
+    },
+    "SUDDEN_DETERIORATION": {
+      "total_windows": 3888,
+      "true_positives": 558,
+      "false_positives": 102,
+      "true_negatives": 2624,
+      "false_negatives": 604,
+      "precision": 0.8455,
+      "recall_detection_rate": 0.4802,
+      "f1": 0.6125,
+      "false_positive_rate": 0.0374
+    },
+    "IMPROVING": {
+      "total_windows": 4464,
+      "true_positives": 0,
+      "false_positives": 29,
+      "true_negatives": 4435,
+      "false_negatives": 0,
+      "precision": 0.0,
+      "recall_detection_rate": 0.0,
+      "f1": 0.0,
+      "false_positive_rate": 0.0065
+    }
+  },
+  "detection_delay": {
+    "detected_cases": 66,
+    "missed_cases": 0,
+    "mean_delay_windows": 0.0,
+    "median_delay_windows": 0.0,
+    "worst_delay_windows": 0,
+    "mean_delay_minutes": 0.0,
+    "median_delay_minutes": 0.0
+  },
+  "data_quality_metrics": {
+    "total_gap_windows": 393,
+    "flagged_gap_windows": 14,
+    "flag_rate": 0.0356
+  }
+}
