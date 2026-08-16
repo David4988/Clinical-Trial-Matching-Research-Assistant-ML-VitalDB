@@ -1,0 +1,158 @@
+{
+  "dataset": {
+    "train_patients": 102,
+    "eval_patients": 250,
+    "train_windows": 14688,
+    "eval_windows": 36000,
+    "scenarios": [
+      "STABLE",
+      "IMPROVING",
+      "GRADUAL_DETERIORATION",
+      "SUDDEN_DETERIORATION",
+      "RECOVERY",
+      "ADVERSE_EVENT",
+      "DATA_QUALITY_FAILURE"
+    ],
+    "ground_truth_states": [
+      "normal",
+      "improving",
+      "improved",
+      "deteriorating",
+      "acute_change",
+      "adverse_event",
+      "recovering",
+      "recovered",
+      "post_event",
+      "data_gap"
+    ]
+  },
+  "model": {
+    "type": "IsolationForest",
+    "training_cohort": "STABLE + IMPROVING",
+    "features": [
+      "heart_rate",
+      "spo2",
+      "respiratory_rate",
+      "heart_rate_delta",
+      "spo2_delta",
+      "respiratory_rate_delta"
+    ],
+    "contamination": 0.1,
+    "random_seed": 42
+  },
+  "metrics": {
+    "precision": 0.5044,
+    "recall": 0.6741,
+    "f1": 0.5771,
+    "fpr": 0.1841
+  },
+  "per_scenario": {
+    "RECOVERY": {
+      "total_windows": 4608,
+      "true_positives": 879,
+      "false_positives": 1922,
+      "true_negatives": 1150,
+      "false_negatives": 657,
+      "precision": 0.3138,
+      "recall_detection_rate": 0.5723,
+      "f1": 0.4053,
+      "false_positive_rate": 0.6257
+    },
+    "STABLE": {
+      "total_windows": 9648,
+      "true_positives": 0,
+      "false_positives": 1166,
+      "true_negatives": 8482,
+      "false_negatives": 0,
+      "precision": 0.0,
+      "recall_detection_rate": 0.0,
+      "f1": 0.0,
+      "false_positive_rate": 0.1209
+    },
+    "GRADUAL_DETERIORATION": {
+      "total_windows": 4608,
+      "true_positives": 2742,
+      "false_positives": 0,
+      "true_negatives": 0,
+      "false_negatives": 1866,
+      "precision": 1.0,
+      "recall_detection_rate": 0.5951,
+      "f1": 0.7461,
+      "false_positive_rate": 0.0
+    },
+    "ADVERSE_EVENT": {
+      "total_windows": 5616,
+      "true_positives": 439,
+      "false_positives": 1261,
+      "true_negatives": 3916,
+      "false_negatives": 0,
+      "precision": 0.2582,
+      "recall_detection_rate": 1.0,
+      "f1": 0.4105,
+      "false_positive_rate": 0.2436
+    },
+    "DATA_QUALITY_FAILURE": {
+      "total_windows": 2775,
+      "true_positives": 0,
+      "false_positives": 202,
+      "true_negatives": 2573,
+      "false_negatives": 0,
+      "precision": 0.0,
+      "recall_detection_rate": 0.0,
+      "f1": 0.0,
+      "false_positive_rate": 0.0728
+    },
+    "SUDDEN_DETERIORATION": {
+      "total_windows": 3888,
+      "true_positives": 1161,
+      "false_positives": 203,
+      "true_negatives": 2523,
+      "false_negatives": 1,
+      "precision": 0.8512,
+      "recall_detection_rate": 0.9991,
+      "f1": 0.9192,
+      "false_positive_rate": 0.0745
+    },
+    "IMPROVING": {
+      "total_windows": 4464,
+      "true_positives": 0,
+      "false_positives": 375,
+      "true_negatives": 4089,
+      "false_negatives": 0,
+      "precision": 0.0,
+      "recall_detection_rate": 0.0,
+      "f1": 0.0,
+      "false_positive_rate": 0.084
+    }
+  },
+  "detection_delay": {
+    "detected_cases": 66,
+    "missed_cases": 0,
+    "mean_delay_windows": 0.0,
+    "median_delay_windows": 0.0,
+    "worst_delay_windows": 0,
+    "mean_delay_minutes": 0.0,
+    "median_delay_minutes": 0.0
+  },
+  "xai": {
+    "evidence_completeness_rate": 1.0,
+    "scenario_consistency_rate": 0.7061944444444445,
+    "explanation_generation_success_rate": 1.0,
+    "gemini_adapter": "implemented",
+    "fallback_behavior": "graceful fallback to deterministic layer on API failure"
+  },
+  "limitations": [
+    "Deterministic physiological shifts",
+    "Trivial separability of acute events (SUDDEN_DETERIORATION, ADVERSE_EVENT)",
+    "Lack of real-world noisy variance",
+    "Requires artificial contamination setting"
+  ],
+  "reproducibility": {
+    "generate_data": "PYTHONPATH=. .venv/bin/python synthetic_trial/src/generator.py",
+    "run_evaluation": "PYTHONPATH=. .venv/bin/python generate_synthetic_evaluation.py",
+    "run_contamination_experiment": "PYTHONPATH=. .venv/bin/python run_contamination_experiment.py",
+    "generate_xai_validation": "PYTHONPATH=. .venv/bin/python synthetic_trial/generate_xai_report.py",
+    "generate_demo": "PYTHONPATH=. .venv/bin/python synthetic_trial/generate_synthetic_demo.py",
+    "run_tests": "PYTHONPATH=. .venv/bin/pytest synthetic_trial/tests/ -v"
+  }
+}
