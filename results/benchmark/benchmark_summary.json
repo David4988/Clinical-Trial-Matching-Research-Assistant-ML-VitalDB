@@ -1,0 +1,358 @@
+{
+  "benchmark": "model_b_baseline",
+  "ground_truth": "none available; no accuracy, precision, recall, F1, AUROC or AUPRC is defined for this experiment and none is reported",
+  "model": {
+    "algorithm": "sklearn.ensemble.IsolationForest",
+    "n_features": 15,
+    "n_estimators": 200,
+    "contamination": 0.1,
+    "canonical_seed": 20260816
+  },
+  "windows_analyzed": 135,
+  "windows_flagged": 14,
+  "data_selection": {
+    "rows_in_feature_table": 158,
+    "rows_window_usable": 139,
+    "rows_excluded_unusable_window": 19,
+    "rows_excluded_null_feature": 4,
+    "rows_analyzed": 135,
+    "null_counts_among_usable_rows": {
+      "rr_delta": 4
+    },
+    "excluded_null_windows": [
+      {
+        "caseid": 2,
+        "window_index": 2,
+        "window_start_s": 600,
+        "window_end_s": 900
+      },
+      {
+        "caseid": 4,
+        "window_index": 2,
+        "window_start_s": 600,
+        "window_end_s": 900
+      },
+      {
+        "caseid": 8,
+        "window_index": 1,
+        "window_start_s": 300,
+        "window_end_s": 600
+      },
+      {
+        "caseid": 9,
+        "window_index": 2,
+        "window_start_s": 600,
+        "window_end_s": 900
+      }
+    ],
+    "imputation": "none \u2014 rows with a null feature are excluded, not filled"
+  },
+  "benchmark_1_seed_stability": {
+    "seeds_tested": [
+      20260816,
+      1,
+      7,
+      42,
+      1234,
+      99991
+    ],
+    "canonical_seed": 20260816,
+    "flagged_min": 14,
+    "flagged_max": 14,
+    "top10_overlap_min": 9,
+    "top10_overlap_max": 10,
+    "top10_overlap_mean": 9.6,
+    "spearman_min": 0.9913,
+    "spearman_max": 0.9948,
+    "spearman_mean": 0.9936,
+    "pct_labels_unchanged_min": 98.52,
+    "pct_labels_unchanged_max": 100.0,
+    "pct_labels_unchanged_mean": 99.41,
+    "interpretation": "The ranking is highly reproducible across seeds (Spearman 0.9913\u20130.9948), and the flag count is fixed at 14 by the contamination parameter rather than by anything the model discovered, so it cannot vary. 99.41% of labels are unchanged on average, meaning the disagreement is confined to a small number of windows near the decision boundary \u2014 exactly where a fixed budget forces an arbitrary cut. This says the PROCEDURE is stable. It says nothing about whether the flagged windows are meaningful, and a seed sweep cannot address that."
+  },
+  "benchmark_2_simple_baseline": {
+    "method": "robust z-score: z = (x - median) / scale, scale = 1.4826*MAD, falling back to IQR/1.349 where MAD is zero; window score = max |z| over features",
+    "deterministic": true,
+    "features_available": 15,
+    "features_used": 12,
+    "features_excluded_degenerate": [
+      "spo2_max",
+      "spo2_delta",
+      "rr_delta"
+    ],
+    "flag_rule": "top 14 by score, matched to the Isolation Forest count",
+    "threshold_variant_z": 3.5,
+    "windows_with_any_feature_beyond_threshold": 50,
+    "scales": [
+      {
+        "feature": "hr_mean",
+        "median": 76.2533,
+        "scale": 9.3502,
+        "estimator": "MAD",
+        "used": true
+      },
+      {
+        "feature": "hr_std",
+        "median": 1.8567,
+        "scale": 1.1419,
+        "estimator": "MAD",
+        "used": true
+      },
+      {
+        "feature": "hr_min",
+        "median": 72.0,
+        "scale": 10.3782,
+        "estimator": "MAD",
+        "used": true
+      },
+      {
+        "feature": "hr_max",
+        "median": 82.0,
+        "scale": 10.3782,
+        "estimator": "MAD",
+        "used": true
+      },
+      {
+        "feature": "hr_delta",
+        "median": 0.24,
+        "scale": 2.9355,
+        "estimator": "MAD",
+        "used": true
+      },
+      {
+        "feature": "spo2_mean",
+        "median": 100.0,
+        "scale": 0.1408,
+        "estimator": "IQR",
+        "used": true
+      },
+      {
+        "feature": "spo2_std",
+        "median": 0.0,
+        "scale": 0.2031,
+        "estimator": "IQR",
+        "used": true
+      },
+      {
+        "feature": "spo2_min",
+        "median": 100.0,
+        "scale": 0.7413,
+        "estimator": "IQR",
+        "used": true
+      },
+      {
+        "feature": "spo2_max",
+        "median": 100.0,
+        "scale": 0.0,
+        "estimator": "degenerate",
+        "used": false
+      },
+      {
+        "feature": "spo2_delta",
+        "median": 0.0,
+        "scale": 0.0,
+        "estimator": "degenerate",
+        "used": false
+      },
+      {
+        "feature": "rr_mean",
+        "median": 13.0,
+        "scale": 1.4826,
+        "estimator": "MAD",
+        "used": true
+      },
+      {
+        "feature": "rr_std",
+        "median": 0.0,
+        "scale": 0.3128,
+        "estimator": "IQR",
+        "used": true
+      },
+      {
+        "feature": "rr_min",
+        "median": 12.0,
+        "scale": 1.4826,
+        "estimator": "MAD",
+        "used": true
+      },
+      {
+        "feature": "rr_max",
+        "median": 14.0,
+        "scale": 2.9652,
+        "estimator": "MAD",
+        "used": true
+      },
+      {
+        "feature": "rr_delta",
+        "median": 0.0,
+        "scale": 0.0,
+        "estimator": "degenerate",
+        "used": false
+      }
+    ],
+    "windows_compared": 135,
+    "isolation_forest_flagged": 14,
+    "baseline_flagged": 14,
+    "flagged_by_both": 12,
+    "isolation_forest_only": 2,
+    "baseline_only": 2,
+    "flagged_by_neither": 119,
+    "top10_overlap": 8,
+    "spearman_rank_correlation": 0.8802,
+    "rank_correlation_note": "Both rankings order the same 135 windows, so Spearman is meaningful as an agreement statistic. It is not a performance measure: neither ranking is a reference.",
+    "episode_isolation_forest": {
+      "caseid": 4,
+      "range_min": [
+        285.0,
+        340.0
+      ],
+      "windows_in_range": 11,
+      "flagged": 8,
+      "window_indices": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ]
+    },
+    "episode_baseline": {
+      "caseid": 4,
+      "range_min": [
+        285.0,
+        340.0
+      ],
+      "windows_in_range": 11,
+      "flagged": 9,
+      "window_indices": [
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ]
+    },
+    "interpretation": "A deterministic robust z-score with no model recovers 12 of the 14 Isolation Forest flags and 8 of its top 10, with Spearman 0.8802 across all 135 windows. Both methods identify the case 4 episode. Two unsupervised methods agreeing is not evidence that either is correct \u2014 they read the same 15 features, so shared blind spots are expected rather than surprising. What it does establish is that the flags are not an artifact of tree ensembling: a transparent rule reaches largely the same conclusion. Where they differ is informative, because the baseline scores on a single most-extreme feature while the Isolation Forest can combine several moderately unusual ones. Neither is declared superior here; the evidence does not support that claim in either direction."
+  },
+  "benchmark_3_temporal_coherence": {
+    "overall": {
+      "windows_analyzed": 135,
+      "flagged": 14,
+      "with_adjacent_flagged_neighbour": 12,
+      "pct_in_contiguous_runs": 85.71,
+      "n_runs": 4,
+      "run_lengths": [
+        8,
+        4,
+        1,
+        1
+      ],
+      "longest_run": 8,
+      "isolated_flags": 2
+    },
+    "per_case": [
+      {
+        "caseid": 2,
+        "windows_analyzed": 46,
+        "flagged": 0,
+        "with_adjacent_flagged_neighbour": 0,
+        "pct_in_contiguous_runs": 0.0,
+        "n_runs": 0,
+        "run_lengths": [],
+        "longest_run": 0
+      },
+      {
+        "caseid": 4,
+        "windows_analyzed": 65,
+        "flagged": 8,
+        "with_adjacent_flagged_neighbour": 8,
+        "pct_in_contiguous_runs": 100.0,
+        "n_runs": 1,
+        "run_lengths": [
+          8
+        ],
+        "longest_run": 8
+      },
+      {
+        "caseid": 8,
+        "windows_analyzed": 15,
+        "flagged": 6,
+        "with_adjacent_flagged_neighbour": 4,
+        "pct_in_contiguous_runs": 66.67,
+        "n_runs": 3,
+        "run_lengths": [
+          4,
+          1,
+          1
+        ],
+        "longest_run": 4
+      },
+      {
+        "caseid": 9,
+        "windows_analyzed": 9,
+        "flagged": 0,
+        "with_adjacent_flagged_neighbour": 0,
+        "pct_in_contiguous_runs": 0.0,
+        "n_runs": 0,
+        "run_lengths": [],
+        "longest_run": 0
+      }
+    ],
+    "runs": [
+      {
+        "caseid": 4,
+        "start_window": 60,
+        "end_window": 67,
+        "length": 8
+      },
+      {
+        "caseid": 8,
+        "start_window": 2,
+        "end_window": 2,
+        "length": 1
+      },
+      {
+        "caseid": 8,
+        "start_window": 4,
+        "end_window": 7,
+        "length": 4
+      },
+      {
+        "caseid": 8,
+        "start_window": 11,
+        "end_window": 11,
+        "length": 1
+      }
+    ],
+    "adjacency_definition": "consecutive window_index within the same case; a window that was not analysed breaks a run rather than being assumed continuous",
+    "interpretation": "85.71% of flags sit adjacent to another flag, in 4 runs, the longest spanning 8 consecutive windows (40 minutes). Independent noise over 14 flags in 135 windows would rarely produce a run that long, so the flags are picking up something with temporal extent rather than firing at random. Two cautions: the model scores each window independently with no temporal features, so clustering is a property of the underlying signal and not of the detector; and a sustained physiological state and a sustained artifact both produce runs, so coherence alone does not distinguish them."
+  },
+  "benchmark_4_evidence_review": {
+    "windows_reviewed": 14,
+    "physiologically_supported": 13,
+    "mainly_data_quality": 0,
+    "ambiguous": 1,
+    "rules": {
+      "physiologically_supported": "every core signal at 100% coverage AND at least one evidence flag (mean change or unusual dispersion)",
+      "mainly_data_quality": "at least one core signal below 100% coverage AND no evidence flag",
+      "ambiguous": "anything else: imperfect coverage alongside an evidence flag, or full coverage with no evidence flag at all"
+    },
+    "not_clinical_validation": "'Physiologically supported' means the flag rests on signal behaviour rather than on data quality. It is NOT a claim that the behaviour is abnormal, clinically meaningful, or medically accurate. No clinical review has taken place.",
+    "interpretation": "13 of 14 flags rest on signal behaviour at full coverage, 0 on data quality alone, and 1 are ambiguous. This is partly by construction: the coverage ablation removed the features that previously drove data-quality flags, so a low count here reflects that earlier decision working as intended rather than an independent discovery. The category names describe what the evidence points at, not whether the physiology is abnormal."
+  },
+  "limitations": [
+    "No ground truth exists, so none of these benchmarks measures correctness. They measure reproducibility, agreement, structure and composition.",
+    "Seed stability and baseline agreement both rest on the same 15 features over the same 135 windows. A blind spot shared by both methods is invisible to this benchmark by construction.",
+    "The flagged count is fixed by contamination = 0.10 in every run, so no benchmark here can tell whether 14 is the right number.",
+    "Four cases, and case 4 supplies nearly half the analyzed windows, so 'unusual' is defined largely by one case.",
+    "Temporal coherence does not distinguish a sustained physiological state from a sustained artifact.",
+    "The evidence review applies a mechanical rule to existing evidence objects. It is not clinical review and involved no clinician."
+  ]
+}

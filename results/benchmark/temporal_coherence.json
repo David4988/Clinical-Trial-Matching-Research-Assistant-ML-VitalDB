@@ -1,0 +1,92 @@
+{
+  "overall": {
+    "windows_analyzed": 135,
+    "flagged": 14,
+    "with_adjacent_flagged_neighbour": 12,
+    "pct_in_contiguous_runs": 85.71,
+    "n_runs": 4,
+    "run_lengths": [
+      8,
+      4,
+      1,
+      1
+    ],
+    "longest_run": 8,
+    "isolated_flags": 2
+  },
+  "per_case": [
+    {
+      "caseid": 2,
+      "windows_analyzed": 46,
+      "flagged": 0,
+      "with_adjacent_flagged_neighbour": 0,
+      "pct_in_contiguous_runs": 0.0,
+      "n_runs": 0,
+      "run_lengths": [],
+      "longest_run": 0
+    },
+    {
+      "caseid": 4,
+      "windows_analyzed": 65,
+      "flagged": 8,
+      "with_adjacent_flagged_neighbour": 8,
+      "pct_in_contiguous_runs": 100.0,
+      "n_runs": 1,
+      "run_lengths": [
+        8
+      ],
+      "longest_run": 8
+    },
+    {
+      "caseid": 8,
+      "windows_analyzed": 15,
+      "flagged": 6,
+      "with_adjacent_flagged_neighbour": 4,
+      "pct_in_contiguous_runs": 66.67,
+      "n_runs": 3,
+      "run_lengths": [
+        4,
+        1,
+        1
+      ],
+      "longest_run": 4
+    },
+    {
+      "caseid": 9,
+      "windows_analyzed": 9,
+      "flagged": 0,
+      "with_adjacent_flagged_neighbour": 0,
+      "pct_in_contiguous_runs": 0.0,
+      "n_runs": 0,
+      "run_lengths": [],
+      "longest_run": 0
+    }
+  ],
+  "runs": [
+    {
+      "caseid": 4,
+      "start_window": 60,
+      "end_window": 67,
+      "length": 8
+    },
+    {
+      "caseid": 8,
+      "start_window": 2,
+      "end_window": 2,
+      "length": 1
+    },
+    {
+      "caseid": 8,
+      "start_window": 4,
+      "end_window": 7,
+      "length": 4
+    },
+    {
+      "caseid": 8,
+      "start_window": 11,
+      "end_window": 11,
+      "length": 1
+    }
+  ],
+  "adjacency_definition": "consecutive window_index within the same case; a window that was not analysed breaks a run rather than being assumed continuous"
+}
