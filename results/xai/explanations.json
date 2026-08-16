@@ -1,0 +1,297 @@
+{
+  "schema_version": "explanation-1.0",
+  "purpose": "Structured plain-English explanations of each flagged monitoring window. These are evidence-based summaries produced by a deterministic rule layer, NOT reconstructions of the Isolation Forest's internal decision path.",
+  "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination.",
+  "source_evidence": "results/xai/evidence_cases.json",
+  "counts": {
+    "explanations": 14
+  },
+  "explanations": [
+    {
+      "case_id": 4,
+      "window_index": 62,
+      "anomaly_rank": 1,
+      "anomaly_score": 0.2389,
+      "time_label": "310.0-315.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows within-window instability in RR and SpO2, most prominently RR.",
+      "signal_narratives": {
+        "hr": "HR mean decreased by 1.77 bpm from the reference window (101.46 \u2192 99.69), trend score -1.43 sd.",
+        "spo2": "SpO2 showed unusually large within-window variability (std 3.11, range 81\u2013100 %, case threshold 1.00), while its mean remained within normal variation.",
+        "rr": "RR showed unusually large within-window variability (std 8.94, range 5\u201333 breaths/min, case threshold 2.57), while its mean remained within normal variation."
+      },
+      "primary_drivers": [
+        "RR",
+        "SpO2",
+        "HR"
+      ],
+      "driver_type": "mixed",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 4,
+      "window_index": 64,
+      "anomaly_rank": 2,
+      "anomaly_score": 0.1044,
+      "time_label": "320.0-325.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows RR had unusually large within-window variability.",
+      "signal_narratives": {
+        "hr": "HR was stable and showed typical within-window spread.",
+        "spo2": "SpO2 was stable and showed typical within-window spread.",
+        "rr": "RR showed unusually large within-window variability (std 5.84, range 6\u201326 breaths/min, case threshold 2.57), while its mean remained within normal variation."
+      },
+      "primary_drivers": [
+        "RR"
+      ],
+      "driver_type": "instability",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 4,
+      "window_index": 63,
+      "anomaly_rank": 3,
+      "anomaly_score": 0.1037,
+      "time_label": "315.0-320.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows instability in RR alongside a mean shift in HR.",
+      "signal_narratives": {
+        "hr": "HR mean decreased by 2.73 bpm from the reference window (99.69 \u2192 96.97), trend score -2.75 sd.",
+        "spo2": "SpO2 was stable and showed typical within-window spread.",
+        "rr": "RR showed unusually large within-window variability (std 3.31, range 13\u201328 breaths/min, case threshold 2.57), while its mean remained within normal variation."
+      },
+      "primary_drivers": [
+        "RR",
+        "HR"
+      ],
+      "driver_type": "mixed",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 8,
+      "window_index": 6,
+      "anomaly_rank": 4,
+      "anomaly_score": 0.0955,
+      "time_label": "30.0-35.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows SpO2 mean shifted downward.",
+      "signal_narratives": {
+        "hr": "HR was stable and showed typical within-window spread.",
+        "spo2": "SpO2 mean decreased by 0.73 % from the reference window (97.89 \u2192 97.15), trend score -1.09 sd.",
+        "rr": "RR was stable and showed typical within-window spread."
+      },
+      "primary_drivers": [
+        "SpO2"
+      ],
+      "driver_type": "mean_shift",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 4,
+      "window_index": 61,
+      "anomaly_rank": 5,
+      "anomaly_score": 0.0902,
+      "time_label": "305.0-310.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows RR had unusually large within-window variability.",
+      "signal_narratives": {
+        "hr": "HR was stable and showed typical within-window spread.",
+        "spo2": "SpO2 was stable and showed typical within-window spread.",
+        "rr": "RR showed unusually large within-window variability (std 5.07, range 4\u201320 breaths/min, case threshold 2.57), while its mean remained within normal variation."
+      },
+      "primary_drivers": [
+        "RR"
+      ],
+      "driver_type": "instability",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 4,
+      "window_index": 66,
+      "anomaly_rank": 6,
+      "anomaly_score": 0.0848,
+      "time_label": "330.0-335.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows RR had unusually large within-window variability.",
+      "signal_narratives": {
+        "hr": "HR was stable and showed typical within-window spread.",
+        "spo2": "SpO2 was stable and showed typical within-window spread.",
+        "rr": "RR showed unusually large within-window variability (std 3.43, range 13\u201324 breaths/min, case threshold 2.57), while its mean remained within normal variation."
+      },
+      "primary_drivers": [
+        "RR"
+      ],
+      "driver_type": "instability",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 4,
+      "window_index": 65,
+      "anomaly_rank": 7,
+      "anomaly_score": 0.081,
+      "time_label": "325.0-330.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows within-window instability in RR and HR, most prominently RR.",
+      "signal_narratives": {
+        "hr": "HR showed unusually large within-window variability (std 5.77, range 92\u2013138 bpm, case threshold 4.90), while its mean remained within normal variation.",
+        "spo2": "SpO2 was stable and showed typical within-window spread.",
+        "rr": "RR showed unusually large within-window variability (std 4.72, range 8\u201324 breaths/min, case threshold 2.57), while its mean remained within normal variation."
+      },
+      "primary_drivers": [
+        "RR",
+        "HR"
+      ],
+      "driver_type": "instability",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 4,
+      "window_index": 60,
+      "anomaly_rank": 8,
+      "anomaly_score": 0.0707,
+      "time_label": "300.0-305.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows instability in RR alongside a mean shift in HR.",
+      "signal_narratives": {
+        "hr": "HR mean increased by 19.12 bpm from the reference window (84.29 \u2192 103.41), trend score +5.93 sd.",
+        "spo2": "SpO2 was stable and showed typical within-window spread.",
+        "rr": "RR showed unusually large within-window variability (std 4.24, range 6\u201321 breaths/min, case threshold 2.57), while its mean remained within normal variation."
+      },
+      "primary_drivers": [
+        "RR",
+        "HR"
+      ],
+      "driver_type": "mixed",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 8,
+      "window_index": 11,
+      "anomaly_rank": 9,
+      "anomaly_score": 0.0565,
+      "time_label": "55.0-60.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows HR had unusually large within-window variability.",
+      "signal_narratives": {
+        "hr": "HR showed unusually large within-window variability (std 10.09, range 45\u2013139 bpm, case threshold 6.04), while its mean remained within normal variation.",
+        "spo2": "SpO2 was stable and showed typical within-window spread.",
+        "rr": "RR was stable and showed typical within-window spread."
+      },
+      "primary_drivers": [
+        "HR"
+      ],
+      "driver_type": "instability",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 8,
+      "window_index": 2,
+      "anomaly_rank": 10,
+      "anomaly_score": 0.0474,
+      "time_label": "10.0-15.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows concurrent mean shifts in SpO2 and RR.",
+      "signal_narratives": {
+        "hr": "HR was stable and showed typical within-window spread.",
+        "spo2": "SpO2 mean decreased by 1.53 % from the reference window (99.80 \u2192 98.27), trend score -3.09 sd.",
+        "rr": "RR mean decreased by 3.44 breaths/min from the reference window (13.44 \u2192 10.00), trend score -1.27 sd."
+      },
+      "primary_drivers": [
+        "SpO2",
+        "RR"
+      ],
+      "driver_type": "mean_shift",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 8,
+      "window_index": 5,
+      "anomaly_rank": 11,
+      "anomaly_score": 0.0394,
+      "time_label": "25.0-30.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows SpO2 mean shifted downward.",
+      "signal_narratives": {
+        "hr": "HR was stable and showed typical within-window spread.",
+        "spo2": "SpO2 mean decreased by 1.40 % from the reference window (99.29 \u2192 97.89), trend score -2.21 sd.",
+        "rr": "RR was stable and showed typical within-window spread."
+      },
+      "primary_drivers": [
+        "SpO2"
+      ],
+      "driver_type": "mean_shift",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 4,
+      "window_index": 67,
+      "anomaly_rank": 12,
+      "anomaly_score": 0.0239,
+      "time_label": "335.0-340.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows RR had unusually large within-window variability.",
+      "signal_narratives": {
+        "hr": "HR was stable and showed typical within-window spread.",
+        "spo2": "SpO2 was stable and showed typical within-window spread.",
+        "rr": "RR showed unusually large within-window variability (std 4.08, range 5\u201321 breaths/min, case threshold 2.57), while its mean remained within normal variation."
+      },
+      "primary_drivers": [
+        "RR"
+      ],
+      "driver_type": "instability",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 8,
+      "window_index": 7,
+      "anomaly_rank": 13,
+      "anomaly_score": 0.0113,
+      "time_label": "35.0-40.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows SpO2 mean shifted upward.",
+      "signal_narratives": {
+        "hr": "HR was stable and showed typical within-window spread.",
+        "spo2": "SpO2 mean increased by 1.47 % from the reference window (97.15 \u2192 98.63), trend score +2.56 sd.",
+        "rr": "RR was stable and showed typical within-window spread."
+      },
+      "primary_drivers": [
+        "SpO2"
+      ],
+      "driver_type": "mean_shift",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    },
+    {
+      "case_id": 8,
+      "window_index": 4,
+      "anomaly_rank": 14,
+      "anomaly_score": 0.0029,
+      "time_label": "20.0-25.0 min from case start",
+      "headline": "The model flagged this window. The supplied evidence shows HR had unusually large within-window variability.",
+      "signal_narratives": {
+        "hr": "HR showed unusually large within-window variability (std 8.43, range 47\u2013104 bpm, case threshold 6.04), while its mean remained within normal variation.",
+        "spo2": "SpO2 was stable and showed typical within-window spread.",
+        "rr": "RR was stable and showed typical within-window spread."
+      },
+      "primary_drivers": [
+        "HR"
+      ],
+      "driver_type": "instability",
+      "supporting_detail": [],
+      "data_quality_notes": [],
+      "interpretation": "This is a statistical description of unusual monitoring data, not a clinical diagnosis or adverse-event determination."
+    }
+  ]
+}
