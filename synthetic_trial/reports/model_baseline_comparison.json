@@ -1,0 +1,351 @@
+{
+  "baseline": {
+    "Configuration": "Current baseline (All scenarios, 0.10)",
+    "Precision": 0.5578,
+    "Recall": 0.2447,
+    "F1": 0.3402,
+    "FPR": 0.0539,
+    "Sudden Det. Recall": 0.4802,
+    "Adverse Event Recall": 0.9977
+  },
+  "experiment_results": [
+    {
+      "Configuration": "Stable/Improving training, 0.10",
+      "Precision": 0.5044,
+      "Recall": 0.6741,
+      "F1": 0.5771,
+      "FPR": 0.1841,
+      "Sudden Det. Recall": 0.9991,
+      "Adverse Event Recall": 1.0
+    },
+    {
+      "Configuration": "Stable/Improving training, 0.15",
+      "Precision": 0.4564,
+      "Recall": 0.7189,
+      "F1": 0.5584,
+      "FPR": 0.238,
+      "Sudden Det. Recall": 1.0,
+      "Adverse Event Recall": 1.0
+    },
+    {
+      "Configuration": "Stable/Improving training, 0.20",
+      "Precision": 0.4194,
+      "Recall": 0.7522,
+      "F1": 0.5386,
+      "FPR": 0.2894,
+      "Sudden Det. Recall": 1.0,
+      "Adverse Event Recall": 1.0
+    }
+  ],
+  "detailed_reports": {
+    "c_0.1": {
+      "overall": {
+        "total_windows": 35607,
+        "true_positives": 5221,
+        "false_positives": 5129,
+        "true_negatives": 22733,
+        "false_negatives": 2524,
+        "precision": 0.5044,
+        "recall_detection_rate": 0.6741,
+        "f1": 0.5771,
+        "false_positive_rate": 0.1841
+      },
+      "scenarios": {
+        "RECOVERY": {
+          "total_windows": 4608,
+          "true_positives": 879,
+          "false_positives": 1922,
+          "true_negatives": 1150,
+          "false_negatives": 657,
+          "precision": 0.3138,
+          "recall_detection_rate": 0.5723,
+          "f1": 0.4053,
+          "false_positive_rate": 0.6257
+        },
+        "STABLE": {
+          "total_windows": 9648,
+          "true_positives": 0,
+          "false_positives": 1166,
+          "true_negatives": 8482,
+          "false_negatives": 0,
+          "precision": 0.0,
+          "recall_detection_rate": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.1209
+        },
+        "GRADUAL_DETERIORATION": {
+          "total_windows": 4608,
+          "true_positives": 2742,
+          "false_positives": 0,
+          "true_negatives": 0,
+          "false_negatives": 1866,
+          "precision": 1.0,
+          "recall_detection_rate": 0.5951,
+          "f1": 0.7461,
+          "false_positive_rate": 0.0
+        },
+        "ADVERSE_EVENT": {
+          "total_windows": 5616,
+          "true_positives": 439,
+          "false_positives": 1261,
+          "true_negatives": 3916,
+          "false_negatives": 0,
+          "precision": 0.2582,
+          "recall_detection_rate": 1.0,
+          "f1": 0.4105,
+          "false_positive_rate": 0.2436
+        },
+        "DATA_QUALITY_FAILURE": {
+          "total_windows": 2775,
+          "true_positives": 0,
+          "false_positives": 202,
+          "true_negatives": 2573,
+          "false_negatives": 0,
+          "precision": 0.0,
+          "recall_detection_rate": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.0728
+        },
+        "SUDDEN_DETERIORATION": {
+          "total_windows": 3888,
+          "true_positives": 1161,
+          "false_positives": 203,
+          "true_negatives": 2523,
+          "false_negatives": 1,
+          "precision": 0.8512,
+          "recall_detection_rate": 0.9991,
+          "f1": 0.9192,
+          "false_positive_rate": 0.0745
+        },
+        "IMPROVING": {
+          "total_windows": 4464,
+          "true_positives": 0,
+          "false_positives": 375,
+          "true_negatives": 4089,
+          "false_negatives": 0,
+          "precision": 0.0,
+          "recall_detection_rate": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.084
+        }
+      },
+      "delay": {
+        "detected_cases": 66,
+        "missed_cases": 0,
+        "mean_delay_windows": 0.0,
+        "median_delay_windows": 0.0,
+        "worst_delay_windows": 0,
+        "mean_delay_minutes": 0.0,
+        "median_delay_minutes": 0.0
+      },
+      "pred_anomaly_count": 10376,
+      "pred_anomaly_pct": 28.822222222222223
+    },
+    "c_0.15": {
+      "overall": {
+        "total_windows": 35607,
+        "true_positives": 5568,
+        "false_positives": 6631,
+        "true_negatives": 21231,
+        "false_negatives": 2177,
+        "precision": 0.4564,
+        "recall_detection_rate": 0.7189,
+        "f1": 0.5584,
+        "false_positive_rate": 0.238
+      },
+      "scenarios": {
+        "RECOVERY": {
+          "total_windows": 4608,
+          "true_positives": 984,
+          "false_positives": 2128,
+          "true_negatives": 944,
+          "false_negatives": 552,
+          "precision": 0.3162,
+          "recall_detection_rate": 0.6406,
+          "f1": 0.4234,
+          "false_positive_rate": 0.6927
+        },
+        "STABLE": {
+          "total_windows": 9648,
+          "true_positives": 0,
+          "false_positives": 1673,
+          "true_negatives": 7975,
+          "false_negatives": 0,
+          "precision": 0.0,
+          "recall_detection_rate": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.1734
+        },
+        "GRADUAL_DETERIORATION": {
+          "total_windows": 4608,
+          "true_positives": 2983,
+          "false_positives": 0,
+          "true_negatives": 0,
+          "false_negatives": 1625,
+          "precision": 1.0,
+          "recall_detection_rate": 0.6474,
+          "f1": 0.7859,
+          "false_positive_rate": 0.0
+        },
+        "ADVERSE_EVENT": {
+          "total_windows": 5616,
+          "true_positives": 439,
+          "false_positives": 1633,
+          "true_negatives": 3544,
+          "false_negatives": 0,
+          "precision": 0.2119,
+          "recall_detection_rate": 1.0,
+          "f1": 0.3497,
+          "false_positive_rate": 0.3154
+        },
+        "DATA_QUALITY_FAILURE": {
+          "total_windows": 2775,
+          "true_positives": 0,
+          "false_positives": 328,
+          "true_negatives": 2447,
+          "false_negatives": 0,
+          "precision": 0.0,
+          "recall_detection_rate": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.1182
+        },
+        "SUDDEN_DETERIORATION": {
+          "total_windows": 3888,
+          "true_positives": 1162,
+          "false_positives": 335,
+          "true_negatives": 2391,
+          "false_negatives": 0,
+          "precision": 0.7762,
+          "recall_detection_rate": 1.0,
+          "f1": 0.874,
+          "false_positive_rate": 0.1229
+        },
+        "IMPROVING": {
+          "total_windows": 4464,
+          "true_positives": 0,
+          "false_positives": 534,
+          "true_negatives": 3930,
+          "false_negatives": 0,
+          "precision": 0.0,
+          "recall_detection_rate": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.1196
+        }
+      },
+      "delay": {
+        "detected_cases": 66,
+        "missed_cases": 0,
+        "mean_delay_windows": 0.0,
+        "median_delay_windows": 0.0,
+        "worst_delay_windows": 0,
+        "mean_delay_minutes": 0.0,
+        "median_delay_minutes": 0.0
+      },
+      "pred_anomaly_count": 12245,
+      "pred_anomaly_pct": 34.013888888888886
+    },
+    "c_0.2": {
+      "overall": {
+        "total_windows": 35607,
+        "true_positives": 5826,
+        "false_positives": 8064,
+        "true_negatives": 19798,
+        "false_negatives": 1919,
+        "precision": 0.4194,
+        "recall_detection_rate": 0.7522,
+        "f1": 0.5386,
+        "false_positive_rate": 0.2894
+      },
+      "scenarios": {
+        "RECOVERY": {
+          "total_windows": 4608,
+          "true_positives": 1055,
+          "false_positives": 2291,
+          "true_negatives": 781,
+          "false_negatives": 481,
+          "precision": 0.3153,
+          "recall_detection_rate": 0.6868,
+          "f1": 0.4322,
+          "false_positive_rate": 0.7458
+        },
+        "STABLE": {
+          "total_windows": 9648,
+          "true_positives": 0,
+          "false_positives": 2219,
+          "true_negatives": 7429,
+          "false_negatives": 0,
+          "precision": 0.0,
+          "recall_detection_rate": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.23
+        },
+        "GRADUAL_DETERIORATION": {
+          "total_windows": 4608,
+          "true_positives": 3170,
+          "false_positives": 0,
+          "true_negatives": 0,
+          "false_negatives": 1438,
+          "precision": 1.0,
+          "recall_detection_rate": 0.6879,
+          "f1": 0.8151,
+          "false_positive_rate": 0.0
+        },
+        "ADVERSE_EVENT": {
+          "total_windows": 5616,
+          "true_positives": 439,
+          "false_positives": 1954,
+          "true_negatives": 3223,
+          "false_negatives": 0,
+          "precision": 0.1835,
+          "recall_detection_rate": 1.0,
+          "f1": 0.31,
+          "false_positive_rate": 0.3774
+        },
+        "DATA_QUALITY_FAILURE": {
+          "total_windows": 2775,
+          "true_positives": 0,
+          "false_positives": 464,
+          "true_negatives": 2311,
+          "false_negatives": 0,
+          "precision": 0.0,
+          "recall_detection_rate": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.1672
+        },
+        "SUDDEN_DETERIORATION": {
+          "total_windows": 3888,
+          "true_positives": 1162,
+          "false_positives": 465,
+          "true_negatives": 2261,
+          "false_negatives": 0,
+          "precision": 0.7142,
+          "recall_detection_rate": 1.0,
+          "f1": 0.8333,
+          "false_positive_rate": 0.1706
+        },
+        "IMPROVING": {
+          "total_windows": 4464,
+          "true_positives": 0,
+          "false_positives": 671,
+          "true_negatives": 3793,
+          "false_negatives": 0,
+          "precision": 0.0,
+          "recall_detection_rate": 0.0,
+          "f1": 0.0,
+          "false_positive_rate": 0.1503
+        }
+      },
+      "delay": {
+        "detected_cases": 66,
+        "missed_cases": 0,
+        "mean_delay_windows": 0.0,
+        "median_delay_windows": 0.0,
+        "worst_delay_windows": 0,
+        "mean_delay_minutes": 0.0,
+        "median_delay_minutes": 0.0
+      },
+      "pred_anomaly_count": 13950,
+      "pred_anomaly_pct": 38.75
+    }
+  }
+}

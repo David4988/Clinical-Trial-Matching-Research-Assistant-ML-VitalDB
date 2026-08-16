@@ -4,7 +4,7 @@ import pandas as pd
 
 def format_synthetic_evidence(row: pd.Series) -> dict:
     """Format a single scored window into structured XAI evidence."""
-    return {
+    ev = {
         "patient_id": str(row.get("patient_id", "")),
         "trial_id": str(row.get("trial_id", "")),
         "timestamp_minutes": float(row.get("timestamp", 0.0)),
@@ -32,9 +32,22 @@ def format_synthetic_evidence(row: pd.Series) -> dict:
             }
         },
         
-        "coverage": float(row.get("coverage_percent", 100.0)),
-        "data_quality": str(row.get("data_quality", "GOOD")),
+        "coverage_percent": float(row.get("coverage_percent", 100.0)),
+        "data_quality": str(row.get("data_quality_label", "GOOD")),
     }
+    
+    # Calculate strongest signal (most extreme delta magnitude normalized roughly)
+    # This is a naive heuristic for synthetic XAI since we lack variance data.
+    deltas = {
+        "heart_rate": abs(ev["signals"]["hr"]["delta"]) if ev["signals"]["hr"]["delta"] is not None else 0.0,
+        # scale SpO2 delta up since a 2% change in SpO2 is clinically as significant as a ~10bpm change in HR
+        "spo2": abs(ev["signals"]["spo2"]["delta"]) * 5 if ev["signals"]["spo2"]["delta"] is not None else 0.0,
+        "respiratory_rate": abs(ev["signals"]["rr"]["delta"]) * 2 if ev["signals"]["rr"]["delta"] is not None else 0.0,
+    }
+    strongest = max(deltas, key=deltas.get) if max(deltas.values()) > 0 else "none"
+    ev["strongest_signal"] = strongest
+    
+    return ev
 
 def format_all_evidence(scored_df: pd.DataFrame) -> list[dict]:
     """Format a collection of scored windows."""

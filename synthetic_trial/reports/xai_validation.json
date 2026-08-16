@@ -1,0 +1,15 @@
+{
+  "total_evaluated_windows": 36000,
+  "explanation_generation_success_rate": 1.0,
+  "evidence_completeness_rate": 1.0,
+  "scenario_consistency_rate": 0.7061944444444445,
+  "per_scenario_consistency": {
+    "RECOVERY": 1.0,
+    "STABLE": 0.08271144278606965,
+    "GRADUAL_DETERIORATION": 1.0,
+    "ADVERSE_EVENT": 0.9285968660968661,
+    "DATA_QUALITY_FAILURE": 0.9138257575757576,
+    "SUDDEN_DETERIORATION": 0.7291666666666666,
+    "IMPROVING": 1.0
+  }
+}

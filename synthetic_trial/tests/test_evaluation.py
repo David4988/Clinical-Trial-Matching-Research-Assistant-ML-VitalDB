@@ -119,3 +119,29 @@ def test_evidence_formatting():
     assert evidence["anomaly_score"] == 0.45
     assert evidence["signals"]["hr"]["current_mean"] == 80.0
     assert evidence["signals"]["hr"]["delta"] == 2.0
+
+def test_training_cohort_selection():
+    from synthetic_trial.src.model import select_training_cohort
+    
+    # Create mock training dataframe with various scenarios
+    df = pd.DataFrame({
+        "patient_id": ["P1", "P1", "P2", "P2", "P3", "P4", "P5"],
+        "scenario": ["STABLE", "STABLE", "IMPROVING", "IMPROVING", "GRADUAL_DETERIORATION", "SUDDEN_DETERIORATION", "ADVERSE_EVENT"],
+        "ground_truth_state": ["normal"] * 7,
+        "value": range(7)
+    })
+    
+    filtered = select_training_cohort(df)
+    
+    # Only P1 (STABLE) and P2 (IMPROVING) should remain
+    remaining_patients = set(filtered["patient_id"].unique())
+    assert remaining_patients == {"P1", "P2"}
+    assert "P3" not in remaining_patients
+    assert "P4" not in remaining_patients
+    
+    # Ensure all their windows are kept
+    assert len(filtered[filtered["patient_id"] == "P1"]) == 2
+    assert len(filtered[filtered["patient_id"] == "P2"]) == 2
+    
+    # Ensure no scenario leakage in output
+    assert set(filtered["scenario"].unique()) == {"STABLE", "IMPROVING"}

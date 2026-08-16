@@ -40,12 +40,28 @@ def prepare_model_matrix(df: pd.DataFrame) -> pd.DataFrame:
     valid = df.dropna(subset=MODEL_FEATURES).copy()
     return valid
 
-def train_anomaly_model(train_df: pd.DataFrame, contamination: float = 0.10, seed: int = 42) -> IsolationForest:
-    """Train Isolation Forest on the training patients.
+def select_training_cohort(train_df: pd.DataFrame) -> pd.DataFrame:
+    """Filter the training set to only include patients with normal/stable physiology.
     
-    The model only sees the physiological monitoring features.
+    This ensures the anomaly detector learns a cleaner baseline and does not
+    treat physiological deterioration as part of the normal distribution.
     """
-    matrix = prepare_model_matrix(train_df)[MODEL_FEATURES]
+    valid_scenarios = {"STABLE", "IMPROVING"}
+    patient_scenarios = train_df.groupby("patient_id")["scenario"].first()
+    valid_patients = patient_scenarios[patient_scenarios.isin(valid_scenarios)].index
+    
+    return train_df[train_df["patient_id"].isin(valid_patients)].copy()
+
+def train_anomaly_model(train_df: pd.DataFrame, contamination: float = 0.10, seed: int = 42) -> IsolationForest:
+    """Train Isolation Forest on a cleaner cohort of the training patients.
+    
+    The model only sees the physiological monitoring features of STABLE/IMPROVING patients.
+    """
+    # 1. Select cohort
+    cohort_df = select_training_cohort(train_df)
+    
+    # 2. Extract valid features
+    matrix = prepare_model_matrix(cohort_df)[MODEL_FEATURES]
     
     model = IsolationForest(
         n_estimators=100,

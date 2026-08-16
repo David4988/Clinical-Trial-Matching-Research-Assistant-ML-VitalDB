@@ -1,0 +1,123 @@
+[
+  {
+    "demo_case": "Case 1 (STABLE)",
+    "ground_truth_scenario": "STABLE",
+    "ground_truth_state": "normal",
+    "model_decision": "normal",
+    "physiological_evidence": {
+      "hr": {
+        "current_mean": 53.4,
+        "delta": null
+      },
+      "spo2": {
+        "current_mean": 94.0,
+        "delta": null
+      },
+      "rr": {
+        "current_mean": 12.7,
+        "delta": null
+      }
+    },
+    "deterministic_explanation": {
+      "status": "normal",
+      "explanation_type": "physiological_stability",
+      "key_signals": [],
+      "direction": [],
+      "evidence_summary": "Model scored window as normal; physiological signals show stability.",
+      "anomaly_score": null
+    },
+    "scenario_consistency": {
+      "evidence_completeness": true,
+      "scenario_consistency": true,
+      "validation_reason": "Explanation correctly reflects stable/minor physiological variance.",
+      "validation_type": "scenario-grounded engineering validation"
+    },
+    "gemini_explanation": null
+  },
+  {
+    "demo_case": "Case 2 (SUDDEN_DETERIORATION)",
+    "ground_truth_scenario": "SUDDEN_DETERIORATION",
+    "ground_truth_state": "acute_change",
+    "model_decision": "anomaly",
+    "physiological_evidence": {
+      "hr": {
+        "current_mean": 99.3,
+        "delta": 16.7
+      },
+      "spo2": {
+        "current_mean": 90.4,
+        "delta": -4.2
+      },
+      "rr": {
+        "current_mean": 22.5,
+        "delta": 5.1
+      }
+    },
+    "deterministic_explanation": {
+      "status": "anomaly",
+      "explanation_type": "acute_physiological_change",
+      "key_signals": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate"
+      ],
+      "direction": [
+        "HEART_RATE increasing",
+        "SPO2 decreasing",
+        "RESPIRATORY_RATE increasing"
+      ],
+      "evidence_summary": "Model flagged window as anomalous. Evidence shows significant changes in heart_rate, spo2, respiratory_rate, most prominently spo2.",
+      "anomaly_score": 0.212998
+    },
+    "scenario_consistency": {
+      "evidence_completeness": true,
+      "scenario_consistency": true,
+      "validation_reason": "Correctly identified acute change and matched 3 expected directional shifts.",
+      "validation_type": "scenario-grounded engineering validation"
+    },
+    "gemini_explanation": null
+  },
+  {
+    "demo_case": "Case 3 (ADVERSE_EVENT)",
+    "ground_truth_scenario": "ADVERSE_EVENT",
+    "ground_truth_state": "adverse_event",
+    "model_decision": "anomaly",
+    "physiological_evidence": {
+      "hr": {
+        "current_mean": 102.7,
+        "delta": 32.1
+      },
+      "spo2": {
+        "current_mean": 86.9,
+        "delta": -8.1
+      },
+      "rr": {
+        "current_mean": 26.2,
+        "delta": 7.9
+      }
+    },
+    "deterministic_explanation": {
+      "status": "anomaly",
+      "explanation_type": "acute_physiological_change",
+      "key_signals": [
+        "heart_rate",
+        "spo2",
+        "respiratory_rate"
+      ],
+      "direction": [
+        "HEART_RATE increasing",
+        "SPO2 decreasing",
+        "RESPIRATORY_RATE increasing"
+      ],
+      "evidence_summary": "Model flagged window as anomalous. Evidence shows significant changes in heart_rate, spo2, respiratory_rate, most prominently spo2.",
+      "anomaly_score": 0.226868
+    },
+    "scenario_consistency": {
+      "evidence_completeness": true,
+      "scenario_consistency": true,
+      "validation_reason": "Correctly identified severe acute physiological shift.",
+      "validation_type": "scenario-grounded engineering validation"
+    },
+    "gemini_explanation": null
+  }
+]
