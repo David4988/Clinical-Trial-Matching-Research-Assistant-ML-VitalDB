@@ -5,7 +5,7 @@
   "source": {
     "model": "Isolation Forest, Model B: 15 physiological features (HR/SpO2/RR x mean, std, min, max, delta), coverage features excluded as model inputs",
     "feature_table": "results/features/feature_table_5min.csv",
-    "results_table": "results/ablation/anomaly_results_model_b.csv",
+    "results_table": "results/model/anomaly_results.csv",
     "window_minutes": 5.0,
     "coverage_note": "Coverage percentages are reported as EVIDENCE for every signal but were not inputs to Model B."
   },
@@ -15,6 +15,15 @@
     "self_referential": true,
     "not_a_clinical_threshold": true,
     "note": "A statistical band meaning 'moved more than this signal normally varies within a window'. Every flag's arithmetic is emitted under observations.change_basis so it can be audited or recomputed with a different k."
+  },
+  "dispersion_rule": {
+    "definition": "unusual = current_std > Q3(reference) + k * IQR(reference), reference = this signal's std across the case's OTHER usable windows",
+    "k": 1.5,
+    "one_sided": true,
+    "self_referential": true,
+    "not_a_clinical_threshold": true,
+    "causal": false,
+    "note": "A one-sided Tukey upper fence describing within-window instability, which the change flags cannot express. Computed over the whole case INCLUDING later windows, so it is valid as post-hoc explanation of an already-scored window but must never be fed back into the feature table or the detector. Where a signal is flat across essentially the whole case the fence collapses to zero; those flags carry degenerate_reference=true. Full arithmetic is emitted under observations.dispersion_basis."
   },
   "counts": {
     "windows_flagged": 14,
@@ -89,6 +98,10 @@
         "hr_direction": "decrease",
         "spo2_direction": "decrease",
         "rr_direction": "increase",
+        "hr_dispersion_unusual": false,
+        "spo2_dispersion_unusual": true,
+        "rr_dispersion_unusual": true,
+        "n_signals_dispersion_unusual": 2,
         "change_basis": {
           "hr": {
             "delta": -1.7667,
@@ -113,6 +126,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "movement within the signal's own within-window variability"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 0.665,
+            "reference_windows": 67,
+            "reference_median": 1.8567,
+            "reference_q3": 2.9715,
+            "reference_iqr": 1.5178,
+            "threshold": 5.2483,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "spo2": {
+            "current_std": 3.1052,
+            "reference_windows": 67,
+            "reference_median": 0.0,
+            "reference_q3": 0.3982,
+            "reference_iqr": 0.3982,
+            "threshold": 0.9954,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": true,
+            "reason": "within-window spread exceeds the case's upper Tukey fence"
+          },
+          "rr": {
+            "current_std": 8.9412,
+            "reference_windows": 65,
+            "reference_median": 0.0,
+            "reference_q3": 1.0276,
+            "reference_iqr": 1.0276,
+            "threshold": 2.569,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": true,
+            "reason": "within-window spread exceeds the case's upper Tukey fence"
           }
         }
       }
@@ -184,6 +235,10 @@
         "hr_direction": "decrease",
         "spo2_direction": "decrease",
         "rr_direction": "decrease",
+        "hr_dispersion_unusual": false,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": true,
+        "n_signals_dispersion_unusual": 1,
         "change_basis": {
           "hr": {
             "delta": -1.6,
@@ -208,6 +263,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "movement within the signal's own within-window variability"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 2.1964,
+            "reference_windows": 67,
+            "reference_median": 1.756,
+            "reference_q3": 2.9715,
+            "reference_iqr": 1.5311,
+            "threshold": 5.2681,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "spo2": {
+            "current_std": 0.7797,
+            "reference_windows": 67,
+            "reference_median": 0.0,
+            "reference_q3": 0.3982,
+            "reference_iqr": 0.3982,
+            "threshold": 0.9954,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 5.8441,
+            "reference_windows": 65,
+            "reference_median": 0.0,
+            "reference_q3": 1.0276,
+            "reference_iqr": 1.0276,
+            "threshold": 2.569,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": true,
+            "reason": "within-window spread exceeds the case's upper Tukey fence"
           }
         }
       }
@@ -279,6 +372,10 @@
         "hr_direction": "decrease",
         "spo2_direction": "increase",
         "rr_direction": "increase",
+        "hr_dispersion_unusual": false,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": true,
+        "n_signals_dispersion_unusual": 1,
         "change_basis": {
           "hr": {
             "delta": -2.7266,
@@ -303,6 +400,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "movement within the signal's own within-window variability"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 1.2338,
+            "reference_windows": 67,
+            "reference_median": 1.8567,
+            "reference_q3": 2.9715,
+            "reference_iqr": 1.5178,
+            "threshold": 5.2483,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "spo2": {
+            "current_std": 0.2758,
+            "reference_windows": 67,
+            "reference_median": 0.0,
+            "reference_q3": 0.4305,
+            "reference_iqr": 0.4305,
+            "threshold": 1.0762,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 3.3098,
+            "reference_windows": 65,
+            "reference_median": 0.0,
+            "reference_q3": 1.0276,
+            "reference_iqr": 1.0276,
+            "threshold": 2.569,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": true,
+            "reason": "within-window spread exceeds the case's upper Tukey fence"
           }
         }
       }
@@ -374,6 +509,10 @@
         "hr_direction": "decrease",
         "spo2_direction": "decrease",
         "rr_direction": "no change",
+        "hr_dispersion_unusual": false,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": false,
+        "n_signals_dispersion_unusual": 0,
         "change_basis": {
           "hr": {
             "delta": -1.3867,
@@ -398,6 +537,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "zero dispersion in both windows; flag falls back to delta != 0"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 3.9741,
+            "reference_windows": 17,
+            "reference_median": 2.6589,
+            "reference_q3": 3.6097,
+            "reference_iqr": 1.6209,
+            "threshold": 6.0411,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "spo2": {
+            "current_std": 0.6102,
+            "reference_windows": 17,
+            "reference_median": 0.3261,
+            "reference_q3": 0.5378,
+            "reference_iqr": 0.3096,
+            "threshold": 1.0022,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 0.0,
+            "reference_windows": 15,
+            "reference_median": 0.0,
+            "reference_q3": 0.0,
+            "reference_iqr": 0.0,
+            "threshold": 0.0,
+            "threshold_k": 1.5,
+            "degenerate_reference": true,
+            "unusual": false,
+            "reason": "flat in this window, as in the rest of the case"
           }
         }
       }
@@ -469,6 +646,10 @@
         "hr_direction": "decrease",
         "spo2_direction": "decrease",
         "rr_direction": "decrease",
+        "hr_dispersion_unusual": false,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": true,
+        "n_signals_dispersion_unusual": 1,
         "change_basis": {
           "hr": {
             "delta": -1.9533,
@@ -493,6 +674,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "movement within the signal's own within-window variability"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 1.6205,
+            "reference_windows": 67,
+            "reference_median": 1.8567,
+            "reference_q3": 2.9715,
+            "reference_iqr": 1.5311,
+            "threshold": 5.2681,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "spo2": {
+            "current_std": 0.5231,
+            "reference_windows": 67,
+            "reference_median": 0.0,
+            "reference_q3": 0.3982,
+            "reference_iqr": 0.3982,
+            "threshold": 0.9954,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 5.0703,
+            "reference_windows": 65,
+            "reference_median": 0.0,
+            "reference_q3": 1.0276,
+            "reference_iqr": 1.0276,
+            "threshold": 2.569,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": true,
+            "reason": "within-window spread exceeds the case's upper Tukey fence"
           }
         }
       }
@@ -564,6 +783,10 @@
         "hr_direction": "increase",
         "spo2_direction": "decrease",
         "rr_direction": "increase",
+        "hr_dispersion_unusual": false,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": true,
+        "n_signals_dispersion_unusual": 1,
         "change_basis": {
           "hr": {
             "delta": 1.3733,
@@ -588,6 +811,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "movement within the signal's own within-window variability"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 4.7353,
+            "reference_windows": 67,
+            "reference_median": 1.756,
+            "reference_q3": 2.8238,
+            "reference_iqr": 1.3834,
+            "threshold": 4.8989,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "spo2": {
+            "current_std": 0.7023,
+            "reference_windows": 67,
+            "reference_median": 0.0,
+            "reference_q3": 0.3982,
+            "reference_iqr": 0.3982,
+            "threshold": 0.9954,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 3.4289,
+            "reference_windows": 65,
+            "reference_median": 0.0,
+            "reference_q3": 1.0276,
+            "reference_iqr": 1.0276,
+            "threshold": 2.569,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": true,
+            "reason": "within-window spread exceeds the case's upper Tukey fence"
           }
         }
       }
@@ -659,6 +920,10 @@
         "hr_direction": "increase",
         "spo2_direction": "increase",
         "rr_direction": "increase",
+        "hr_dispersion_unusual": true,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": true,
+        "n_signals_dispersion_unusual": 2,
         "change_basis": {
           "hr": {
             "delta": 0.5533,
@@ -683,6 +948,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "movement within the signal's own within-window variability"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 5.7726,
+            "reference_windows": 67,
+            "reference_median": 1.756,
+            "reference_q3": 2.8238,
+            "reference_iqr": 1.3834,
+            "threshold": 4.8989,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": true,
+            "reason": "within-window spread exceeds the case's upper Tukey fence"
+          },
+          "spo2": {
+            "current_std": 0.0,
+            "reference_windows": 67,
+            "reference_median": 0.0,
+            "reference_q3": 0.4305,
+            "reference_iqr": 0.4305,
+            "threshold": 1.0762,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 4.7202,
+            "reference_windows": 65,
+            "reference_median": 0.0,
+            "reference_q3": 1.0276,
+            "reference_iqr": 1.0276,
+            "threshold": 2.569,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": true,
+            "reason": "within-window spread exceeds the case's upper Tukey fence"
           }
         }
       }
@@ -754,6 +1057,10 @@
         "hr_direction": "increase",
         "spo2_direction": "no change",
         "rr_direction": "decrease",
+        "hr_dispersion_unusual": false,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": true,
+        "n_signals_dispersion_unusual": 1,
         "change_basis": {
           "hr": {
             "delta": 19.12,
@@ -778,6 +1085,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "movement within the signal's own within-window variability"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 4.1469,
+            "reference_windows": 67,
+            "reference_median": 1.756,
+            "reference_q3": 2.8238,
+            "reference_iqr": 1.3834,
+            "threshold": 4.8989,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "spo2": {
+            "current_std": 0.0,
+            "reference_windows": 67,
+            "reference_median": 0.0,
+            "reference_q3": 0.4305,
+            "reference_iqr": 0.4305,
+            "threshold": 1.0762,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 4.236,
+            "reference_windows": 65,
+            "reference_median": 0.0,
+            "reference_q3": 1.0276,
+            "reference_iqr": 1.0276,
+            "threshold": 2.569,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": true,
+            "reason": "within-window spread exceeds the case's upper Tukey fence"
           }
         }
       }
@@ -849,6 +1194,10 @@
         "hr_direction": "increase",
         "spo2_direction": "increase",
         "rr_direction": "no change",
+        "hr_dispersion_unusual": true,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": false,
+        "n_signals_dispersion_unusual": 1,
         "change_basis": {
           "hr": {
             "delta": 2.4734,
@@ -873,6 +1222,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "zero dispersion in both windows; flag falls back to delta != 0"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 10.0886,
+            "reference_windows": 17,
+            "reference_median": 2.6589,
+            "reference_q3": 3.6097,
+            "reference_iqr": 1.6209,
+            "threshold": 6.0411,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": true,
+            "reason": "within-window spread exceeds the case's upper Tukey fence"
+          },
+          "spo2": {
+            "current_std": 0.1151,
+            "reference_windows": 17,
+            "reference_median": 0.4024,
+            "reference_q3": 0.5754,
+            "reference_iqr": 0.3032,
+            "threshold": 1.0302,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 0.0,
+            "reference_windows": 15,
+            "reference_median": 0.0,
+            "reference_q3": 0.0,
+            "reference_iqr": 0.0,
+            "threshold": 0.0,
+            "threshold_k": 1.5,
+            "degenerate_reference": true,
+            "unusual": false,
+            "reason": "flat in this window, as in the rest of the case"
           }
         }
       }
@@ -944,6 +1331,10 @@
         "hr_direction": "decrease",
         "spo2_direction": "decrease",
         "rr_direction": "decrease",
+        "hr_dispersion_unusual": false,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": false,
+        "n_signals_dispersion_unusual": 0,
         "change_basis": {
           "hr": {
             "delta": -0.0981,
@@ -968,6 +1359,44 @@
             "threshold_k": 1.0,
             "changed": true,
             "reason": "|delta| exceeds the signal's own within-window variability"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 2.1482,
+            "reference_windows": 17,
+            "reference_median": 2.6789,
+            "reference_q3": 3.9741,
+            "reference_iqr": 1.9853,
+            "threshold": 6.952,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "spo2": {
+            "current_std": 0.5754,
+            "reference_windows": 17,
+            "reference_median": 0.3261,
+            "reference_q3": 0.5378,
+            "reference_iqr": 0.3096,
+            "threshold": 1.0022,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 0.0,
+            "reference_windows": 15,
+            "reference_median": 0.0,
+            "reference_q3": 0.0,
+            "reference_iqr": 0.0,
+            "threshold": 0.0,
+            "threshold_k": 1.5,
+            "degenerate_reference": true,
+            "unusual": false,
+            "reason": "flat in this window, as in the rest of the case"
           }
         }
       }
@@ -1039,6 +1468,10 @@
         "hr_direction": "decrease",
         "spo2_direction": "decrease",
         "rr_direction": "no change",
+        "hr_dispersion_unusual": false,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": false,
+        "n_signals_dispersion_unusual": 0,
         "change_basis": {
           "hr": {
             "delta": -3.3133,
@@ -1063,6 +1496,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "zero dispersion in both windows; flag falls back to delta != 0"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 3.1638,
+            "reference_windows": 17,
+            "reference_median": 2.6589,
+            "reference_q3": 3.9741,
+            "reference_iqr": 1.9853,
+            "threshold": 6.952,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "spo2": {
+            "current_std": 0.7285,
+            "reference_windows": 17,
+            "reference_median": 0.3261,
+            "reference_q3": 0.5378,
+            "reference_iqr": 0.3096,
+            "threshold": 1.0022,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 0.0,
+            "reference_windows": 15,
+            "reference_median": 0.0,
+            "reference_q3": 0.0,
+            "reference_iqr": 0.0,
+            "threshold": 0.0,
+            "threshold_k": 1.5,
+            "degenerate_reference": true,
+            "unusual": false,
+            "reason": "flat in this window, as in the rest of the case"
           }
         }
       }
@@ -1134,6 +1605,10 @@
         "hr_direction": "increase",
         "spo2_direction": "increase",
         "rr_direction": "decrease",
+        "hr_dispersion_unusual": false,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": true,
+        "n_signals_dispersion_unusual": 1,
         "change_basis": {
           "hr": {
             "delta": 2.0067,
@@ -1158,6 +1633,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "movement within the signal's own within-window variability"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 2.1292,
+            "reference_windows": 67,
+            "reference_median": 1.756,
+            "reference_q3": 2.9715,
+            "reference_iqr": 1.5311,
+            "threshold": 5.2681,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "spo2": {
+            "current_std": 0.1831,
+            "reference_windows": 67,
+            "reference_median": 0.0,
+            "reference_q3": 0.4305,
+            "reference_iqr": 0.4305,
+            "threshold": 1.0762,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 4.0847,
+            "reference_windows": 65,
+            "reference_median": 0.0,
+            "reference_q3": 1.0276,
+            "reference_iqr": 1.0276,
+            "threshold": 2.569,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": true,
+            "reason": "within-window spread exceeds the case's upper Tukey fence"
           }
         }
       }
@@ -1229,6 +1742,10 @@
         "hr_direction": "decrease",
         "spo2_direction": "increase",
         "rr_direction": "no change",
+        "hr_dispersion_unusual": false,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": false,
+        "n_signals_dispersion_unusual": 0,
         "change_basis": {
           "hr": {
             "delta": -0.3267,
@@ -1253,6 +1770,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "zero dispersion in both windows; flag falls back to delta != 0"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 2.6789,
+            "reference_windows": 17,
+            "reference_median": 2.6589,
+            "reference_q3": 3.9741,
+            "reference_iqr": 1.9853,
+            "threshold": 6.952,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "spo2": {
+            "current_std": 0.5378,
+            "reference_windows": 17,
+            "reference_median": 0.3261,
+            "reference_q3": 0.5754,
+            "reference_iqr": 0.3472,
+            "threshold": 1.0962,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 0.0,
+            "reference_windows": 15,
+            "reference_median": 0.0,
+            "reference_q3": 0.0,
+            "reference_iqr": 0.0,
+            "threshold": 0.0,
+            "threshold_k": 1.5,
+            "degenerate_reference": true,
+            "unusual": false,
+            "reason": "flat in this window, as in the rest of the case"
           }
         }
       }
@@ -1324,6 +1879,10 @@
         "hr_direction": "increase",
         "spo2_direction": "decrease",
         "rr_direction": "no change",
+        "hr_dispersion_unusual": true,
+        "spo2_dispersion_unusual": false,
+        "rr_dispersion_unusual": false,
+        "n_signals_dispersion_unusual": 1,
         "change_basis": {
           "hr": {
             "delta": 6.0733,
@@ -1348,6 +1907,44 @@
             "threshold_k": 1.0,
             "changed": false,
             "reason": "zero dispersion in both windows; flag falls back to delta != 0"
+          }
+        },
+        "dispersion_basis": {
+          "hr": {
+            "current_std": 8.4338,
+            "reference_windows": 17,
+            "reference_median": 2.6589,
+            "reference_q3": 3.6097,
+            "reference_iqr": 1.6209,
+            "threshold": 6.0411,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": true,
+            "reason": "within-window spread exceeds the case's upper Tukey fence"
+          },
+          "spo2": {
+            "current_std": 0.5225,
+            "reference_windows": 17,
+            "reference_median": 0.3261,
+            "reference_q3": 0.5754,
+            "reference_iqr": 0.3472,
+            "threshold": 1.0962,
+            "threshold_k": 1.5,
+            "degenerate_reference": false,
+            "unusual": false,
+            "reason": "within-window spread is within the case's normal range"
+          },
+          "rr": {
+            "current_std": 0.0,
+            "reference_windows": 15,
+            "reference_median": 0.0,
+            "reference_q3": 0.0,
+            "reference_iqr": 0.0,
+            "threshold": 0.0,
+            "threshold_k": 1.5,
+            "degenerate_reference": true,
+            "unusual": false,
+            "reason": "flat in this window, as in the rest of the case"
           }
         }
       }

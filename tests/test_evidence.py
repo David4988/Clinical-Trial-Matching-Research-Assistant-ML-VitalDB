@@ -204,6 +204,163 @@ def test_direction_matches_the_sign_of_delta():
     assert observations["rr_direction"] == "no change"
 
 
+# ── Dispersion flags ─────────────────────────────────────────────────────────
+
+
+def _case_with_stds(stds, caseid=1):
+    """A case whose windows have the given per-window std for all signals."""
+    return pd.DataFrame([
+        _row(caseid, i, std=s, deltas={"hr": 0.1, "spo2": 0.1, "rr": 0.1})
+        for i, s in enumerate(stds)
+    ])
+
+
+def test_dispersion_flag_true_for_a_window_far_above_the_case_fence():
+    # Reference stds 1.0-2.0 -> Q3 = 2.0, IQR = 1.0, fence = 3.5
+    table = _case_with_stds([1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 9.0])
+    basis = evidence.dispersion_basis(table, table.iloc[6], "hr")
+    assert basis["threshold"] == pytest.approx(3.5)
+    assert basis["unusual"] is True
+    assert basis["degenerate_reference"] is False
+
+
+def test_dispersion_flag_false_for_a_typical_window():
+    table = _case_with_stds([1.0, 1.0, 1.0, 2.0, 2.0, 2.0, 2.0])
+    basis = evidence.dispersion_basis(table, table.iloc[6], "hr")
+    assert basis["unusual"] is False
+
+
+def test_dispersion_reference_excludes_the_window_being_judged():
+    """An extreme window must not inflate the bar it is measured against."""
+    table = _case_with_stds([1.0, 1.0, 1.0, 1.0, 1.0, 40.0])
+    basis = evidence.dispersion_basis(table, table.iloc[5], "hr")
+    assert basis["reference_windows"] == 5
+    assert basis["reference_median"] == pytest.approx(1.0)
+    assert basis["unusual"] is True
+
+
+def test_dispersion_flag_handles_a_flat_signal_without_dividing_by_zero():
+    """SpO2 std is exactly zero across whole cases in the real data."""
+    table = _case_with_stds([0.0, 0.0, 0.0, 0.0, 0.0, 2.5])
+    basis = evidence.dispersion_basis(table, table.iloc[5], "spo2")
+    assert basis["threshold"] == pytest.approx(0.0)
+    assert basis["degenerate_reference"] is True
+    assert basis["unusual"] is True
+    assert "flat" in basis["reason"] or "zero dispersion" in basis["reason"]
+
+
+def test_flat_window_in_a_flat_case_is_not_flagged():
+    table = _case_with_stds([0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+    basis = evidence.dispersion_basis(table, table.iloc[5], "spo2")
+    assert basis["unusual"] is False
+    assert basis["degenerate_reference"] is True
+
+
+def test_dispersion_flag_is_null_when_the_case_is_too_short():
+    table = _case_with_stds([1.0, 5.0])
+    basis = evidence.dispersion_basis(table, table.iloc[1], "hr")
+    assert basis["unusual"] is None
+    assert "reference windows" in basis["reason"]
+
+
+def test_dispersion_flag_is_null_when_std_is_missing():
+    table = _case_with_stds([1.0, 1.0, 1.0, 1.0])
+    table.loc[3, "hr_std"] = np.nan
+    basis = evidence.dispersion_basis(table, table.iloc[3], "hr")
+    assert basis["unusual"] is None
+
+
+def test_dispersion_reference_never_crosses_a_case_boundary():
+    quiet = _case_with_stds([1.0] * 6, caseid=1)
+    noisy = _case_with_stds([8.0] * 6, caseid=2)
+    table = pd.concat([quiet, noisy], ignore_index=True)
+    basis = evidence.dispersion_basis(table, noisy.iloc[5], "hr")
+    assert basis["reference_windows"] == 5
+    assert basis["reference_median"] == pytest.approx(8.0)
+    # Normal for its own case, even though it dwarfs case 1.
+    assert basis["unusual"] is False
+
+
+def test_dispersion_reference_ignores_unusable_windows():
+    table = _case_with_stds([1.0, 1.0, 1.0, 1.0, 5.0])
+    table.loc[4, "hr_usable"] = False
+    table.loc[4, "window_usable"] = False
+    basis = evidence.dispersion_basis(table, table.iloc[3], "hr")
+    assert basis["reference_windows"] == 3
+
+
+def test_dispersion_is_one_sided_low_spread_is_not_unusual():
+    table = _case_with_stds([9.0, 9.0, 9.0, 9.0, 0.0])
+    basis = evidence.dispersion_basis(table, table.iloc[4], "hr")
+    assert basis["unusual"] is False, "unusually SMALL spread must not flag"
+
+
+def test_dispersion_k_is_configurable():
+    table = _case_with_stds([1.0, 1.0, 2.0, 2.0, 4.0])
+    loose = evidence.dispersion_basis(table, table.iloc[4], "hr", k=5.0)
+    tight = evidence.dispersion_basis(table, table.iloc[4], "hr", k=0.0)
+    assert tight["threshold"] <= loose["threshold"]
+    assert tight["unusual"] is True
+    assert loose["unusual"] is False
+
+
+def test_dispersion_basis_is_reproducible_from_its_own_numbers():
+    table = _case_with_stds([1.0, 1.0, 1.0, 2.0, 2.0, 9.0])
+    basis = evidence.dispersion_basis(table, table.iloc[5], "hr")
+    assert (basis["current_std"] > basis["threshold"]) is basis["unusual"]
+    assert basis["threshold"] == pytest.approx(
+        basis["reference_q3"] + basis["threshold_k"] * basis["reference_iqr"]
+    )
+
+
+def test_three_dispersion_fields_are_present_on_every_object():
+    table = _case_with_stds([1.0, 1.0, 1.0, 1.0, 8.0])
+    results = pd.DataFrame([_result(1, 4, rank=1, label=1)])
+    document = evidence.build_document(table, results)
+    observations = document["evidence"][0]["observations"]
+    for field in ("hr_dispersion_unusual", "spo2_dispersion_unusual",
+                  "rr_dispersion_unusual"):
+        assert field in observations
+        assert observations[field] in (True, False, None)
+
+
+def test_dispersion_flags_do_not_disturb_the_existing_fields():
+    """Every field from the previous evidence schema must still be present."""
+    table = _case_with_stds([1.0, 1.0, 1.0, 1.0, 8.0])
+    results = pd.DataFrame([_result(1, 4, rank=1, label=1)])
+    entry = evidence.build_document(table, results)["evidence"][0]
+
+    for key in ("case_id", "window_index", "time_range", "anomaly_score",
+                "anomaly_rank", "signals", "n_core_signals_usable",
+                "window_usable", "observations"):
+        assert key in entry
+    for signal in ("hr", "spo2", "rr"):
+        for field in ("current_mean", "previous_usable_mean", "delta", "std",
+                      "min", "max", "coverage_pct"):
+            assert field in entry["signals"][signal]
+    for flag in ("hr_changed", "spo2_changed", "rr_changed",
+                 "multiple_signals_changed", "n_signals_changed",
+                 "hr_direction", "change_basis"):
+        assert flag in entry["observations"]
+
+
+def test_raw_std_min_max_are_preserved_alongside_the_new_flags():
+    table = _case_with_stds([1.0, 1.0, 1.0, 1.0, 8.0])
+    results = pd.DataFrame([_result(1, 4, rank=1, label=1)])
+    hr = evidence.build_document(table, results)["evidence"][0]["signals"]["hr"]
+    assert hr["std"] == pytest.approx(8.0)
+    assert hr["min"] is not None and hr["max"] is not None
+
+
+def test_document_declares_the_dispersion_rule_as_non_clinical_and_non_causal():
+    table = _case_with_stds([1.0, 1.0, 1.0, 1.0, 8.0])
+    results = pd.DataFrame([_result(1, 4, rank=1, label=1)])
+    rule = evidence.build_document(table, results)["dispersion_rule"]
+    assert rule["not_a_clinical_threshold"] is True
+    assert rule["causal"] is False
+    assert rule["one_sided"] is True
+
+
 # ── Object shape ─────────────────────────────────────────────────────────────
 
 

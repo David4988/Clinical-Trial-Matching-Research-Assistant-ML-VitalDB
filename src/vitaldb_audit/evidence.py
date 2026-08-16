@@ -32,6 +32,34 @@ within-window variability:
 This is SELF-REFERENTIAL: "moved more than this signal normally wobbles". It is
 a statistical band, not a physiological threshold, and CHANGE_K is a tunable
 constant rather than a clinical cut-off.
+
+The "dispersion unusual" rule
+-----------------------------
+The change flags above describe movement of the window MEAN.  Model B is
+largely sensitive to instability WITHIN a window, which a mean shift cannot
+express, so each signal also carries:
+
+    reference   = {signal}_std across the case's other usable windows
+    threshold   = Q3(reference) + DISPERSION_K * IQR(reference)
+    unusual     = current_std > threshold
+
+A one-sided Tukey upper fence: standard, non-parametric, and robust to the
+handful of extreme windows that are the whole point of the exercise.  It is
+one-sided because the question is "unusually LARGE dispersion", not "unusual
+dispersion in either direction".
+
+DEGENERATE REFERENCES ARE REAL HERE.  SpO2 std is exactly zero in every usable
+window of some cases, and RR std is zero in most windows of others (a set
+ventilator rate).  When Q3 and IQR are both zero the threshold collapses to
+zero and any non-zero dispersion is flagged — which is the honest reading, since
+the signal's normal dispersion in that case is literally nothing.  Those flags
+are marked ``degenerate_reference: true`` so a consumer can tell "unusual
+against a distribution" from "unusual against a flat line".
+
+NOT CAUSAL.  This statistic is computed over the WHOLE case, including windows
+later than the one being described.  That is legitimate for a post-hoc
+explanation of an already-scored window, and it is exactly why these fields must
+never be fed back into the feature table or the detector.
 """
 
 import json
@@ -49,11 +77,21 @@ SCHEMA_VERSION = "evidence-1.0"
 # Statistical band for the change flags.  Not a clinical threshold.
 CHANGE_K = 1.0
 
+# Tukey fence multiplier for the dispersion flags.  Not a clinical threshold.
+DISPERSION_K = 1.5
+
+# Below this many reference windows the case cannot describe its own normal
+# dispersion, and the flag is reported as unknown rather than guessed.
+MIN_REFERENCE_WINDOWS = 3
+
 SIGNALS = ("hr", "spo2", "rr")
 SIGNAL_UNITS = {"hr": "bpm", "spo2": "%", "rr": "breaths/min"}
 
 XAI_DIR = config.RESULTS_DIR / "xai"
-MODEL_B_RESULTS = config.RESULTS_DIR / "ablation" / "anomaly_results_model_b.csv"
+
+# Model B is the canonical baseline and lives in results/model/. The identical
+# file remains in results/ablation/ as the ablation's own output.
+MODEL_B_RESULTS = config.RESULTS_DIR / "model" / "anomaly_results.csv"
 
 NOT_A_DIAGNOSIS = (
     "A flagged window is a statistically unusual monitoring window — an unusual "
@@ -192,6 +230,80 @@ def change_basis(
     }
 
 
+def dispersion_basis(
+    table: pd.DataFrame, row: pd.Series, signal: str, k: float = DISPERSION_K
+) -> dict:
+    """Is this window's within-window spread large for this signal in this case?
+
+    The reference is every OTHER usable window in the same case, so an extreme
+    window cannot inflate the bar it is judged against.  Emits the full fence
+    arithmetic for audit, in the same style as ``change_basis``.
+    """
+    caseid = int(row["caseid"])
+    window_index = int(row["window_index"])
+    current_std = row[f"{signal}_std"]
+
+    reference = table[
+        (table["caseid"] == caseid)
+        & (table["window_index"] != window_index)
+        & (table[f"{signal}_usable"].fillna(False).astype(bool))
+        & (table[f"{signal}_std"].notna())
+    ][f"{signal}_std"].astype(float)
+
+    basis = {
+        "current_std": _py(current_std),
+        "reference_windows": int(len(reference)),
+        "reference_median": None,
+        "reference_q3": None,
+        "reference_iqr": None,
+        "threshold": None,
+        "threshold_k": k,
+        "degenerate_reference": None,
+        "unusual": None,
+        "reason": "",
+    }
+
+    if current_std is None or pd.isna(current_std):
+        basis["reason"] = "not computable — no standard deviation for this window"
+        return basis
+    if len(reference) < MIN_REFERENCE_WINDOWS:
+        basis["reason"] = (
+            f"not computable — only {len(reference)} reference windows in this "
+            f"case (need {MIN_REFERENCE_WINDOWS})"
+        )
+        return basis
+
+    q1, median, q3 = (float(reference.quantile(q)) for q in (0.25, 0.5, 0.75))
+    iqr = q3 - q1
+    threshold = q3 + k * iqr
+    degenerate = (q3 == 0.0 and iqr == 0.0)
+    unusual = float(current_std) > threshold
+
+    basis.update({
+        "reference_median": round(median, 4),
+        "reference_q3": round(q3, 4),
+        "reference_iqr": round(iqr, 4),
+        "threshold": round(threshold, 4),
+        "degenerate_reference": bool(degenerate),
+        "unusual": bool(unusual),
+    })
+
+    if degenerate:
+        basis["reason"] = (
+            "this signal has zero dispersion in essentially every other usable "
+            "window of this case, so any non-zero spread is atypical for the case"
+            if unusual else
+            "flat in this window, as in the rest of the case"
+        )
+    else:
+        basis["reason"] = (
+            "within-window spread exceeds the case's upper Tukey fence"
+            if unusual else
+            "within-window spread is within the case's normal range"
+        )
+    return basis
+
+
 def direction(delta) -> str | None:
     if delta is None or pd.isna(delta):
         return None
@@ -206,7 +318,10 @@ def direction(delta) -> str | None:
 
 
 def build_window_evidence(
-    table: pd.DataFrame, result_row: pd.Series, k: float = CHANGE_K
+    table: pd.DataFrame,
+    result_row: pd.Series,
+    k: float = CHANGE_K,
+    dispersion_k: float = DISPERSION_K,
 ) -> dict:
     """One complete evidence object for one flagged window."""
     caseid = int(result_row["caseid"])
@@ -223,9 +338,12 @@ def build_window_evidence(
 
     signals = {s: signal_evidence(table, row, s) for s in SIGNALS}
     bases = {s: change_basis(table, row, s, k) for s in SIGNALS}
+    dispersion = {s: dispersion_basis(table, row, s, dispersion_k) for s in SIGNALS}
 
     changed = {s: bases[s]["changed"] for s in SIGNALS}
     n_changed = sum(1 for value in changed.values() if value is True)
+    unusual = {s: dispersion[s]["unusual"] for s in SIGNALS}
+    n_unusual = sum(1 for value in unusual.values() if value is True)
 
     start_s = float(row["window_start_s"])
     end_s = float(row["window_end_s"])
@@ -259,7 +377,12 @@ def build_window_evidence(
             "hr_direction": direction(row["hr_delta"]),
             "spo2_direction": direction(row["spo2_delta"]),
             "rr_direction": direction(row["rr_delta"]),
+            "hr_dispersion_unusual": unusual["hr"],
+            "spo2_dispersion_unusual": unusual["spo2"],
+            "rr_dispersion_unusual": unusual["rr"],
+            "n_signals_dispersion_unusual": n_unusual,
             "change_basis": bases,
+            "dispersion_basis": dispersion,
         },
     }
 
@@ -269,11 +392,15 @@ def build_evidence(
     results: pd.DataFrame,
     k: float = CHANGE_K,
     flagged_only: bool = True,
+    dispersion_k: float = DISPERSION_K,
 ) -> list[dict]:
     """Evidence objects for the flagged windows, most unusual first."""
     subset = results[results["anomaly_label"] == 1] if flagged_only else results
     subset = subset.sort_values("anomaly_rank")
-    return [build_window_evidence(table, row, k) for _, row in subset.iterrows()]
+    return [
+        build_window_evidence(table, row, k, dispersion_k)
+        for _, row in subset.iterrows()
+    ]
 
 
 def build_document(
@@ -281,9 +408,10 @@ def build_document(
     results: pd.DataFrame,
     k: float = CHANGE_K,
     model_description: str | None = None,
+    dispersion_k: float = DISPERSION_K,
 ) -> dict:
     """The full evidence_cases.json payload, provenance included."""
-    evidence = build_evidence(table, results, k)
+    evidence = build_evidence(table, results, k, dispersion_k=dispersion_k)
     return {
         "schema_version": SCHEMA_VERSION,
         "purpose": (
@@ -321,6 +449,27 @@ def build_document(
                 "or recomputed with a different k."
             ),
         },
+        "dispersion_rule": {
+            "definition": (
+                "unusual = current_std > Q3(reference) + k * IQR(reference), "
+                "reference = this signal's std across the case's OTHER usable windows"
+            ),
+            "k": dispersion_k,
+            "one_sided": True,
+            "self_referential": True,
+            "not_a_clinical_threshold": True,
+            "causal": False,
+            "note": (
+                "A one-sided Tukey upper fence describing within-window "
+                "instability, which the change flags cannot express. Computed "
+                "over the whole case INCLUDING later windows, so it is valid as "
+                "post-hoc explanation of an already-scored window but must never "
+                "be fed back into the feature table or the detector. Where a "
+                "signal is flat across essentially the whole case the fence "
+                "collapses to zero; those flags carry degenerate_reference=true. "
+                "Full arithmetic is emitted under observations.dispersion_basis."
+            ),
+        },
         "counts": {
             "windows_flagged": len(evidence),
             "windows_analyzed": int(len(results)),
@@ -356,7 +505,8 @@ def render_window(entry: dict) -> str:
     lines.append("-" * len(header))
 
     lines.append(f"  {'signal':<6}{'mean':>9}{'prev':>9}{'delta':>9}"
-                 f"{'std':>8}{'min':>8}{'max':>8}{'cov%':>8}   change")
+                 f"{'std':>8}{'min':>8}{'max':>8}{'cov%':>8}"
+                 f"   {'mean change':<25}spread vs case")
     for signal in SIGNALS:
         data = entry["signals"][signal]
         basis = entry["observations"]["change_basis"][signal]
@@ -370,17 +520,31 @@ def render_window(entry: dict) -> str:
                        + (f" ({score:+.2f} sd)" if score is not None else ""))
         else:
             verdict = "stable"
+
+        spread = entry["observations"]["dispersion_basis"][signal]
+        if spread["unusual"] is None:
+            spread_verdict = "n/a"
+        elif spread["unusual"]:
+            spread_verdict = "UNUSUALLY WIDE"
+            if spread["threshold"] is not None:
+                spread_verdict += f" (>{spread['threshold']:.2f})"
+            if spread["degenerate_reference"]:
+                spread_verdict += " [flat elsewhere]"
+        else:
+            spread_verdict = "typical"
+
         lines.append(
             f"  {signal:<6}{_fmt(data['current_mean']):>9}"
             f"{_fmt(data['previous_usable_mean']):>9}"
             f"{_fmt(data['delta'], '+.2f'):>9}{_fmt(data['std']):>8}"
             f"{_fmt(data['min']):>8}{_fmt(data['max']):>8}"
-            f"{_fmt(data['coverage_pct'], '.1f'):>8}   {verdict}"
+            f"{_fmt(data['coverage_pct'], '.1f'):>8}   {verdict:<25}{spread_verdict}"
         )
 
     observations = entry["observations"]
     lines.append(
-        f"  signals changed: {observations['n_signals_changed']} of 3"
+        f"  mean changed: {observations['n_signals_changed']} of 3"
+        f"   |   spread unusual: {observations['n_signals_dispersion_unusual']} of 3"
         f"   |   multiple_signals_changed: "
         f"{str(observations['multiple_signals_changed']).lower()}"
         f"   |   core signals usable: {entry['n_core_signals_usable']}/3"

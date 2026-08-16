@@ -1,5 +1,5 @@
 {
-  "experiment": "isolation_forest_baseline_model_b",
+  "experiment": "isolation_forest_baseline_v1",
   "interpretation": "Scores rank windows by how UNUSUAL their feature pattern is relative to the other windows in this dataset. A flagged window is a statistically unusual monitoring window, NOT an adverse event, NOT clinical deterioration, and NOT a clinically validated finding.",
   "ground_truth": "none available; accuracy/precision/recall/F1/AUROC/AUPRC are undefined for this experiment and are not reported",
   "model": {
@@ -11,23 +11,26 @@
     "standardization": "none \u2014 Isolation Forest is invariant to per-feature monotone rescaling"
   },
   "features": {
-    "n_features": 15,
+    "n_features": 18,
     "columns": [
       "hr_mean",
       "hr_std",
       "hr_min",
       "hr_max",
       "hr_delta",
+      "hr_coverage_pct",
       "spo2_mean",
       "spo2_std",
       "spo2_min",
       "spo2_max",
       "spo2_delta",
+      "spo2_coverage_pct",
       "rr_mean",
       "rr_std",
       "rr_min",
       "rr_max",
-      "rr_delta"
+      "rr_delta",
+      "rr_coverage_pct"
     ],
     "excluded_by_design": [
       "caseid",
@@ -40,10 +43,7 @@
       "n_core_usable",
       "window_usable",
       "consecutive_usable_windows",
-      "ART_MBP (all columns)",
-      "hr_coverage_pct",
-      "spo2_coverage_pct",
-      "rr_coverage_pct"
+      "ART_MBP (all columns)"
     ]
   },
   "data_selection": {
@@ -86,16 +86,16 @@
   "score_orientation": "higher anomaly_score = more unusual",
   "score_distribution": {
     "count": 135,
-    "mean": -0.106391,
-    "std": 0.081924,
+    "mean": -0.145394,
+    "std": 0.081397,
     "quantiles": {
-      "q00": -0.194051,
-      "q05": -0.189587,
-      "q25": -0.169309,
-      "q50": -0.131811,
-      "q75": -0.063836,
-      "q95": 0.073793,
-      "q100": 0.238905
+      "q00": -0.223837,
+      "q05": -0.220827,
+      "q25": -0.205274,
+      "q50": -0.175593,
+      "q75": -0.110051,
+      "q95": 0.028317,
+      "q100": 0.194594
     }
   },
   "flagged": {
@@ -107,29 +107,29 @@
         "caseid": 2,
         "windows_analyzed": 46,
         "windows_flagged": 0,
-        "max_score": -0.064061,
+        "max_score": -0.108944,
         "pct_flagged": 0.0
       },
       {
         "caseid": 4,
         "windows_analyzed": 65,
-        "windows_flagged": 8,
-        "max_score": 0.238905,
-        "pct_flagged": 12.3
+        "windows_flagged": 9,
+        "max_score": 0.194594,
+        "pct_flagged": 13.8
       },
       {
         "caseid": 8,
         "windows_analyzed": 15,
-        "windows_flagged": 6,
-        "max_score": 0.095499,
-        "pct_flagged": 40.0
+        "windows_flagged": 4,
+        "max_score": 0.069469,
+        "pct_flagged": 26.7
       },
       {
         "caseid": 9,
         "windows_analyzed": 9,
-        "windows_flagged": 0,
-        "max_score": -0.004292,
-        "pct_flagged": 0.0
+        "windows_flagged": 1,
+        "max_score": 0.01796,
+        "pct_flagged": 11.1
       }
     ]
   },
@@ -140,23 +140,7 @@
         "window_index": 62,
         "window_start_min": 310.0,
         "window_end_min": 315.0,
-        "anomaly_score": 0.238905,
-        "anomaly_label": 1
-      },
-      {
-        "caseid": 4,
-        "window_index": 64,
-        "window_start_min": 320.0,
-        "window_end_min": 325.0,
-        "anomaly_score": 0.104394,
-        "anomaly_label": 1
-      },
-      {
-        "caseid": 4,
-        "window_index": 63,
-        "window_start_min": 315.0,
-        "window_end_min": 320.0,
-        "anomaly_score": 0.103739,
+        "anomaly_score": 0.194594,
         "anomaly_label": 1
       },
       {
@@ -164,7 +148,31 @@
         "window_index": 6,
         "window_start_min": 30.0,
         "window_end_min": 35.0,
-        "anomaly_score": 0.095499,
+        "anomaly_score": 0.069469,
+        "anomaly_label": 1
+      },
+      {
+        "caseid": 4,
+        "window_index": 67,
+        "window_start_min": 335.0,
+        "window_end_min": 340.0,
+        "anomaly_score": 0.057003,
+        "anomaly_label": 1
+      },
+      {
+        "caseid": 4,
+        "window_index": 64,
+        "window_start_min": 320.0,
+        "window_end_min": 325.0,
+        "anomaly_score": 0.054526,
+        "anomaly_label": 1
+      },
+      {
+        "caseid": 4,
+        "window_index": 63,
+        "window_start_min": 315.0,
+        "window_end_min": 320.0,
+        "anomaly_score": 0.042148,
         "anomaly_label": 1
       },
       {
@@ -172,7 +180,7 @@
         "window_index": 61,
         "window_start_min": 305.0,
         "window_end_min": 310.0,
-        "anomaly_score": 0.090201,
+        "anomaly_score": 0.029673,
         "anomaly_label": 1
       },
       {
@@ -180,15 +188,23 @@
         "window_index": 66,
         "window_start_min": 330.0,
         "window_end_min": 335.0,
-        "anomaly_score": 0.084793,
+        "anomaly_score": 0.029261,
         "anomaly_label": 1
       },
       {
         "caseid": 4,
-        "window_index": 65,
-        "window_start_min": 325.0,
-        "window_end_min": 330.0,
-        "anomaly_score": 0.080977,
+        "window_index": 57,
+        "window_start_min": 285.0,
+        "window_end_min": 290.0,
+        "anomaly_score": 0.027912,
+        "anomaly_label": 1
+      },
+      {
+        "caseid": 8,
+        "window_index": 16,
+        "window_start_min": 80.0,
+        "window_end_min": 85.0,
+        "anomaly_score": 0.024604,
         "anomaly_label": 1
       },
       {
@@ -196,57 +212,17 @@
         "window_index": 60,
         "window_start_min": 300.0,
         "window_end_min": 305.0,
-        "anomaly_score": 0.070714,
-        "anomaly_label": 1
-      },
-      {
-        "caseid": 8,
-        "window_index": 11,
-        "window_start_min": 55.0,
-        "window_end_min": 60.0,
-        "anomaly_score": 0.056455,
-        "anomaly_label": 1
-      },
-      {
-        "caseid": 8,
-        "window_index": 2,
-        "window_start_min": 10.0,
-        "window_end_min": 15.0,
-        "anomaly_score": 0.047437,
+        "anomaly_score": 0.02052,
         "anomaly_label": 1
       }
     ],
     "least_unusual": [
       {
         "caseid": 2,
-        "window_index": 41,
-        "window_start_min": 205.0,
-        "window_end_min": 210.0,
-        "anomaly_score": -0.194051,
-        "anomaly_label": 0
-      },
-      {
-        "caseid": 2,
         "window_index": 34,
         "window_start_min": 170.0,
         "window_end_min": 175.0,
-        "anomaly_score": -0.192687,
-        "anomaly_label": 0
-      },
-      {
-        "caseid": 2,
-        "window_index": 39,
-        "window_start_min": 195.0,
-        "window_end_min": 200.0,
-        "anomaly_score": -0.191665,
-        "anomaly_label": 0
-      },
-      {
-        "caseid": 2,
-        "window_index": 45,
-        "window_start_min": 225.0,
-        "window_end_min": 230.0,
-        "anomaly_score": -0.19165,
+        "anomaly_score": -0.223837,
         "anomaly_label": 0
       },
       {
@@ -254,39 +230,31 @@
         "window_index": 38,
         "window_start_min": 190.0,
         "window_end_min": 195.0,
-        "anomaly_score": -0.191183,
+        "anomaly_score": -0.223759,
         "anomaly_label": 0
       },
       {
         "caseid": 2,
-        "window_index": 31,
-        "window_start_min": 155.0,
-        "window_end_min": 160.0,
-        "anomaly_score": -0.190268,
+        "window_index": 41,
+        "window_start_min": 205.0,
+        "window_end_min": 210.0,
+        "anomaly_score": -0.223659,
         "anomaly_label": 0
       },
       {
         "caseid": 2,
-        "window_index": 33,
-        "window_start_min": 165.0,
-        "window_end_min": 170.0,
-        "anomaly_score": -0.189906,
+        "window_index": 39,
+        "window_start_min": 195.0,
+        "window_end_min": 200.0,
+        "anomaly_score": -0.223623,
         "anomaly_label": 0
       },
       {
         "caseid": 2,
-        "window_index": 42,
-        "window_start_min": 210.0,
-        "window_end_min": 215.0,
-        "anomaly_score": -0.18945,
-        "anomaly_label": 0
-      },
-      {
-        "caseid": 2,
-        "window_index": 43,
-        "window_start_min": 215.0,
-        "window_end_min": 220.0,
-        "anomaly_score": -0.188826,
+        "window_index": 45,
+        "window_start_min": 225.0,
+        "window_end_min": 230.0,
+        "anomaly_score": -0.222028,
         "anomaly_label": 0
       },
       {
@@ -294,7 +262,39 @@
         "window_index": 32,
         "window_start_min": 160.0,
         "window_end_min": 165.0,
-        "anomaly_score": -0.186591,
+        "anomaly_score": -0.222025,
+        "anomaly_label": 0
+      },
+      {
+        "caseid": 2,
+        "window_index": 31,
+        "window_start_min": 155.0,
+        "window_end_min": 160.0,
+        "anomaly_score": -0.220862,
+        "anomaly_label": 0
+      },
+      {
+        "caseid": 4,
+        "window_index": 30,
+        "window_start_min": 150.0,
+        "window_end_min": 155.0,
+        "anomaly_score": -0.220812,
+        "anomaly_label": 0
+      },
+      {
+        "caseid": 2,
+        "window_index": 33,
+        "window_start_min": 165.0,
+        "window_end_min": 170.0,
+        "anomaly_score": -0.220677,
+        "anomaly_label": 0
+      },
+      {
+        "caseid": 4,
+        "window_index": 44,
+        "window_start_min": 220.0,
+        "window_end_min": 225.0,
+        "anomaly_score": -0.2206,
         "anomaly_label": 0
       }
     ]
@@ -303,34 +303,5 @@
     "Contamination is an assumed flag rate, not a discovered one; it sets how many windows are labelled, so the flagged count is a parameter choice rather than a measurement.",
     "Coverage percentages are model features, so a window can be flagged for unusual data quality rather than unusual physiology. Check the coverage columns before reading any flag as physiology.",
     "Four cases is a very small reference population; 'unusual' here means unusual relative to these four cases only."
-  ],
-  "variant": {
-    "name": "Model B",
-    "canonical": true,
-    "n_features": 15,
-    "features": [
-      "hr_mean",
-      "hr_std",
-      "hr_min",
-      "hr_max",
-      "hr_delta",
-      "spo2_mean",
-      "spo2_std",
-      "spo2_min",
-      "spo2_max",
-      "spo2_delta",
-      "rr_mean",
-      "rr_std",
-      "rr_min",
-      "rr_max",
-      "rr_delta"
-    ],
-    "excluded_features": [
-      "hr_coverage_pct",
-      "spo2_coverage_pct",
-      "rr_coverage_pct"
-    ],
-    "selected_by": "coverage-feature ablation; see results/ablation/ablation_summary.json",
-    "control": "Model A (18 features) preserved in results/model/model_a_control/"
-  }
+  ]
 }
