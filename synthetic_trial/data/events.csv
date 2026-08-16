@@ -1,0 +1,308 @@
+patient_id,trial_id,timestamp,event_type,severity,scenario,description
+P0001,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0002,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0003,TRIAL-002,305,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0006,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0007,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0009,TRIAL-002,245,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0011,TRIAL-001,475,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0012,TRIAL-001,210,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0014,TRIAL-002,515,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0016,TRIAL-001,375,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0017,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0022,TRIAL-001,445,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0024,TRIAL-002,565,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0026,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0027,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0030,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0031,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0033,TRIAL-002,320,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0034,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0035,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0036,TRIAL-001,435,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0037,TRIAL-003,490,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0040,TRIAL-001,420,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0041,TRIAL-002,305,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0042,TRIAL-002,225,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0043,TRIAL-002,330,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0045,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0047,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0048,TRIAL-003,485,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0049,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0050,TRIAL-001,375,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0051,TRIAL-003,515,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0052,TRIAL-001,425,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0054,TRIAL-001,435,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0056,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0060,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0061,TRIAL-001,440,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0062,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0064,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0066,TRIAL-002,445,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0069,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0070,TRIAL-002,555,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0071,TRIAL-001,370,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0072,TRIAL-003,430,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0073,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0075,TRIAL-002,340,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0076,TRIAL-002,335,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0079,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0081,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0082,TRIAL-001,240,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0083,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0085,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0087,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0089,TRIAL-003,480,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0090,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0091,TRIAL-002,195,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0092,TRIAL-001,225,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0093,TRIAL-001,430,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0094,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0095,TRIAL-001,470,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0096,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0097,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0100,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0102,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0103,TRIAL-001,310,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0107,TRIAL-003,330,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0108,TRIAL-002,470,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0111,TRIAL-002,230,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0112,TRIAL-002,535,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0119,TRIAL-003,315,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0123,TRIAL-002,370,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0125,TRIAL-003,290,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0127,TRIAL-001,200,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0128,TRIAL-002,360,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0129,TRIAL-003,415,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0131,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0132,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0134,TRIAL-003,340,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0135,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0136,TRIAL-003,465,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0137,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0138,TRIAL-003,460,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0140,TRIAL-001,445,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0142,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0144,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0145,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0146,TRIAL-001,310,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0147,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0149,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0150,TRIAL-001,290,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0153,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0154,TRIAL-001,245,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0155,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0157,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0158,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0159,TRIAL-002,310,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0160,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0163,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0164,TRIAL-002,240,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0170,TRIAL-002,305,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0172,TRIAL-003,560,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0173,TRIAL-003,460,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0174,TRIAL-002,475,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0177,TRIAL-003,460,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0178,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0179,TRIAL-003,195,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0180,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0181,TRIAL-002,325,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0183,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0187,TRIAL-001,490,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0188,TRIAL-003,300,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0189,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0190,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0191,TRIAL-002,395,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0193,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0196,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0198,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0202,TRIAL-001,550,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0204,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0205,TRIAL-002,475,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0208,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0210,TRIAL-002,285,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0213,TRIAL-002,495,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0214,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0215,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0216,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0218,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0219,TRIAL-003,500,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0220,TRIAL-002,450,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0221,TRIAL-002,270,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0222,TRIAL-001,460,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0224,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0227,TRIAL-001,325,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0228,TRIAL-003,410,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0231,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0232,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0234,TRIAL-002,280,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0236,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0237,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0238,TRIAL-002,360,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0239,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0240,TRIAL-003,195,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0243,TRIAL-003,560,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0244,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0246,TRIAL-001,260,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0247,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0249,TRIAL-001,555,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0250,TRIAL-003,295,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0252,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0253,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0257,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0258,TRIAL-003,455,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0259,TRIAL-002,330,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0260,TRIAL-001,505,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0261,TRIAL-003,560,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0262,TRIAL-002,305,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0263,TRIAL-003,240,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0264,TRIAL-001,305,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0270,TRIAL-001,425,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0271,TRIAL-002,475,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0272,TRIAL-002,335,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0274,TRIAL-003,500,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0275,TRIAL-001,310,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0276,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0278,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0280,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0282,TRIAL-003,445,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0286,TRIAL-001,470,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0287,TRIAL-003,490,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0288,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0289,TRIAL-001,280,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0290,TRIAL-001,275,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0295,TRIAL-002,410,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0296,TRIAL-003,405,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0298,TRIAL-002,365,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0299,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0300,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0302,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0303,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0305,TRIAL-001,480,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0308,TRIAL-001,475,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0309,TRIAL-002,485,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0311,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0312,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0313,TRIAL-001,255,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0314,TRIAL-003,525,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0315,TRIAL-002,355,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0318,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0320,TRIAL-003,460,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0323,TRIAL-002,530,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0324,TRIAL-001,375,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0326,TRIAL-003,405,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0327,TRIAL-002,240,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0329,TRIAL-001,300,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0333,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0334,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0335,TRIAL-003,495,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0337,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0338,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0339,TRIAL-002,290,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0341,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0342,TRIAL-001,340,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0343,TRIAL-003,220,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0345,TRIAL-001,295,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0346,TRIAL-003,415,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0347,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0348,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0349,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0352,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0353,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0356,TRIAL-003,305,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0357,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0358,TRIAL-003,440,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0359,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0361,TRIAL-001,475,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0362,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0363,TRIAL-002,280,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0365,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0366,TRIAL-002,450,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0370,TRIAL-001,340,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0372,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0373,TRIAL-003,180,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0374,TRIAL-002,270,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0376,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0378,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0379,TRIAL-003,455,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0380,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0383,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0385,TRIAL-003,475,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0387,TRIAL-002,560,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0388,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0390,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0392,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0394,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0396,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0397,TRIAL-003,515,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0400,TRIAL-002,570,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0401,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0402,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0403,TRIAL-002,520,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0404,TRIAL-002,300,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0405,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0406,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0407,TRIAL-001,250,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0408,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0409,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0410,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0412,TRIAL-002,320,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0414,TRIAL-002,365,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0415,TRIAL-001,435,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0416,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0417,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0418,TRIAL-003,400,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0419,TRIAL-002,300,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0423,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0424,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0426,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0428,TRIAL-001,440,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0429,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0430,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0431,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0432,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0433,TRIAL-001,250,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0434,TRIAL-001,565,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0435,TRIAL-003,385,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0436,TRIAL-003,420,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0437,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0438,TRIAL-002,300,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0439,TRIAL-003,395,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0442,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0443,TRIAL-001,445,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0447,TRIAL-003,295,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0448,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0449,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0450,TRIAL-001,525,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0451,TRIAL-003,205,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0452,TRIAL-002,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0453,TRIAL-001,460,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0454,TRIAL-003,555,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0456,TRIAL-003,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0457,TRIAL-002,310,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0458,TRIAL-003,375,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0459,TRIAL-001,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0461,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0465,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0466,TRIAL-003,315,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0467,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0468,TRIAL-002,440,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0469,TRIAL-003,505,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0472,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0474,TRIAL-001,555,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0475,TRIAL-001,310,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0476,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0477,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0479,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0481,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0482,TRIAL-003,290,DATA_QUALITY_EVENT,MODERATE,DATA_QUALITY_FAILURE,Significant reduction in monitoring data coverage
+P0483,TRIAL-002,460,ADVERSE_EVENT,SEVERE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0484,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0485,TRIAL-001,460,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0487,TRIAL-003,515,ADVERSE_EVENT,SEVERE,SUDDEN_DETERIORATION,Sudden physiological shift during monitoring
+P0489,TRIAL-002,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0490,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0492,TRIAL-003,25,DOSE_RESPONSE,MILD,IMPROVING,Progressive improvement in monitored parameters
+P0498,TRIAL-001,240,RECOVERY,MILD,RECOVERY,Physiological parameters beginning to normalise after deterioration
+P0499,TRIAL-002,370,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window
+P0500,TRIAL-001,355,ADVERSE_EVENT,MODERATE,ADVERSE_EVENT,Acute physiological change detected during monitoring window

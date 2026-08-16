@@ -1,0 +1,22 @@
+{
+  "metadata": {
+    "provider": "gemini",
+    "model": "gemini-3.6-flash",
+    "latency_seconds": 10.727,
+    "evidence_reference": {
+      "case_id": 4,
+      "window_index": 62
+    }
+  },
+  "explanation": {
+    "summary": "Between minutes 310.0 and 315.0, heart rate showed a statistically significant mean decrease, while SpO2 and respiratory rate exhibited unusually large within-window variability compared to reference data.",
+    "key_evidence": [
+      "Heart rate mean decreased from 101.46 bpm to 99.6933 bpm (delta -1.7667 bpm, std 0.665, min 98.0 bpm, max 101.0 bpm), which exceeded the signal's within-window variability threshold.",
+      "SpO2 mean changed by -0.5666% to 99.2867% (min 81.0%, max 100.0%), and its within-window standard deviation of 3.1052% exceeded the upper Tukey fence threshold of 0.9954%.",
+      "Respiratory rate mean changed by 5.3333 breaths/min to 16.7533 breaths/min (min 5.0 breaths/min, max 33.0 breaths/min), and its within-window standard deviation of 8.9412 breaths/min exceeded the threshold of 2.569 breaths/min."
+    ],
+    "data_quality": "Data quality is sufficient with 100.0% coverage across all 3 core signals and 61 consecutive usable windows.",
+    "uncertainty": "Calculations rely on statistical metrics such as Tukey fences and within-window standard deviations; deviations represent statistical unusualness rather than proven physiological trends.",
+    "not_a_diagnosis": "This document is a statistical summary of monitoring data and does not constitute a clinical diagnosis or an adverse event determination."
+  }
+}

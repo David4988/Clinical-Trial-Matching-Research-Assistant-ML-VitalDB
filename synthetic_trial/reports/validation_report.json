@@ -1,0 +1,57 @@
+[
+  {
+    "name": "no_duplicate_patient_ids",
+    "passed": true,
+    "detail": "500 unique of 500 rows"
+  },
+  {
+    "name": "no_null_critical_ids",
+    "passed": true,
+    "detail": "clean"
+  },
+  {
+    "name": "no_duplicate_timestamps_per_patient",
+    "passed": true,
+    "detail": "0 patients with duplicate timestamps"
+  },
+  {
+    "name": "dose_numbers_increase",
+    "passed": true,
+    "detail": "0 patients with non-monotonic dose numbers"
+  },
+  {
+    "name": "no_broken_timelines",
+    "passed": true,
+    "detail": "0 patients with timeline gaps"
+  },
+  {
+    "name": "physiological_ranges",
+    "passed": true,
+    "detail": "all within bounds"
+  },
+  {
+    "name": "scenario_labels_valid",
+    "passed": true,
+    "detail": "all valid"
+  },
+  {
+    "name": "dq_failure_coverage",
+    "passed": true,
+    "detail": "all 39 DQ patients have low-coverage windows"
+  },
+  {
+    "name": "events_reference_existing",
+    "passed": true,
+    "detail": "all valid"
+  },
+  {
+    "name": "scenario_consistency",
+    "passed": true,
+    "detail": "0 mismatches between patient and obs scenarios"
+  },
+  {
+    "name": "deterministic_regeneration",
+    "passed": true,
+    "detail": "identical"
+  }
+]
