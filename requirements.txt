@@ -1,0 +1,7 @@
+vitaldb==1.7.2
+pandas>=2.2
+requests>=2.32
+pytest>=8.0
+matplotlib>=3.8
+scikit-learn>=1.5
+joblib>=1.4

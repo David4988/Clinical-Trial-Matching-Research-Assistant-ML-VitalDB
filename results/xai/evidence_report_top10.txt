@@ -1,0 +1,88 @@
+EVIDENCE REPORT — TOP 10 FLAGGED MONITORING WINDOWS
+==============================================================================
+model    : Isolation Forest, Model B: 15 physiological features (HR/SpO2/RR x mean, std, min, max, delta), coverage features excluded as model inputs
+flagged  : 14 of 135 analyzed windows
+change   : changed = |delta / pooled_std| > k, pooled_std = sqrt((std_now^2 + std_reference^2) / 2)  (k=1.0, statistical band, not a clinical threshold)
+
+Each block below is a statistically unusual monitoring window.
+It describes what the signals did. It is not a diagnosis.
+
+#1  case 4  window 62  |  310.0-315.0 min from case start  |  score +0.2389
+---------------------------------------------------------------------------
+  signal     mean     prev    delta     std     min     max    cov%   change
+  hr        99.69   101.46    -1.77    0.67   98.00  101.00   100.0   CHANGED down (-1.43 sd)
+  spo2      99.29    99.85    -0.57    3.11   81.00  100.00   100.0   stable
+  rr        16.75    11.42    +5.33    8.94    5.00   33.00   100.0   stable
+  signals changed: 1 of 3   |   multiple_signals_changed: false   |   core signals usable: 3/3
+
+#2  case 4  window 64  |  320.0-325.0 min from case start  |  score +0.1044
+---------------------------------------------------------------------------
+  signal     mean     prev    delta     std     min     max    cov%   change
+  hr        95.37    96.97    -1.60    2.20   93.00  109.00   100.0   stable
+  spo2      99.79    99.93    -0.14    0.78   94.00  100.00   100.0   stable
+  rr        16.17    20.35    -4.19    5.84    6.00   26.00   100.0   stable
+  signals changed: 0 of 3   |   multiple_signals_changed: false   |   core signals usable: 3/3
+
+#3  case 4  window 63  |  315.0-320.0 min from case start  |  score +0.1037
+---------------------------------------------------------------------------
+  signal     mean     prev    delta     std     min     max    cov%   change
+  hr        96.97    99.69    -2.73    1.23   95.00  100.00   100.0   CHANGED down (-2.75 sd)
+  spo2      99.93    99.29    +0.65    0.28   98.00  100.00   100.0   stable
+  rr        20.35    16.75    +3.60    3.31   13.00   28.00   100.0   stable
+  signals changed: 1 of 3   |   multiple_signals_changed: false   |   core signals usable: 3/3
+
+#4  case 8  window 6  |  30.0-35.0 min from case start  |  score +0.0955
+------------------------------------------------------------------------
+  signal     mean     prev    delta     std     min     max    cov%   change
+  hr        54.46    55.85    -1.39    3.97   48.00   78.00   100.0   stable
+  spo2      97.15    97.89    -0.73    0.61   96.00   98.00   100.0   CHANGED down (-1.09 sd)
+  rr        10.00    10.00    +0.00    0.00   10.00   10.00   100.0   stable
+  signals changed: 1 of 3   |   multiple_signals_changed: false   |   core signals usable: 3/3
+
+#5  case 4  window 61  |  305.0-310.0 min from case start  |  score +0.0902
+---------------------------------------------------------------------------
+  signal     mean     prev    delta     std     min     max    cov%   change
+  hr       101.46   103.41    -1.95    1.62  100.00  116.00   100.0   stable
+  spo2      99.85   100.00    -0.15    0.52   97.00  100.00   100.0   stable
+  rr        11.42    15.05    -3.63    5.07    4.00   20.00   100.0   stable
+  signals changed: 0 of 3   |   multiple_signals_changed: false   |   core signals usable: 3/3
+
+#6  case 4  window 66  |  330.0-335.0 min from case start  |  score +0.0848
+---------------------------------------------------------------------------
+  signal     mean     prev    delta     std     min     max    cov%   change
+  hr        97.29    95.92    +1.37    4.74   91.00  148.00   100.0   stable
+  spo2      99.83   100.00    -0.17    0.70   96.00  100.00   100.0   stable
+  rr        18.03    17.96    +0.07    3.43   13.00   24.00   100.0   stable
+  signals changed: 0 of 3   |   multiple_signals_changed: false   |   core signals usable: 3/3
+
+#7  case 4  window 65  |  325.0-330.0 min from case start  |  score +0.0810
+---------------------------------------------------------------------------
+  signal     mean     prev    delta     std     min     max    cov%   change
+  hr        95.92    95.37    +0.55    5.77   92.00  138.00   100.0   stable
+  spo2     100.00    99.79    +0.21    0.00  100.00  100.00   100.0   stable
+  rr        17.96    16.17    +1.79    4.72    8.00   24.00   100.0   stable
+  signals changed: 0 of 3   |   multiple_signals_changed: false   |   core signals usable: 3/3
+
+#8  case 4  window 60  |  300.0-305.0 min from case start  |  score +0.0707
+---------------------------------------------------------------------------
+  signal     mean     prev    delta     std     min     max    cov%   change
+  hr       103.41    84.29   +19.12    4.15   96.00  149.00   100.0   CHANGED up (+5.93 sd)
+  spo2     100.00   100.00    +0.00    0.00  100.00  100.00   100.0   stable
+  rr        15.05    15.68    -0.63    4.24    6.00   21.00   100.0   stable
+  signals changed: 1 of 3   |   multiple_signals_changed: false   |   core signals usable: 3/3
+
+#9  case 8  window 11  |  55.0-60.0 min from case start  |  score +0.0565
+-------------------------------------------------------------------------
+  signal     mean     prev    delta     std     min     max    cov%   change
+  hr        55.67    53.19    +2.47   10.09   45.00  139.00   100.0   stable
+  spo2      98.99    98.95    +0.04    0.12   98.00   99.00   100.0   stable
+  rr        10.00    10.00    +0.00    0.00   10.00   10.00   100.0   stable
+  signals changed: 0 of 3   |   multiple_signals_changed: false   |   core signals usable: 3/3
+
+#10  case 8  window 2  |  10.0-15.0 min from case start  |  score +0.0474
+-------------------------------------------------------------------------
+  signal     mean     prev    delta     std     min     max    cov%   change
+  hr        54.61    54.71    -0.10    2.15   52.00   62.00   100.0   stable
+  spo2      98.27    99.80    -1.53    0.58   97.00   99.00   100.0   CHANGED down (-3.09 sd)
+  rr        10.00    13.44    -3.44    0.00   10.00   10.00   100.0   CHANGED down (-1.27 sd)
+  signals changed: 2 of 3   |   multiple_signals_changed: true   |   core signals usable: 3/3

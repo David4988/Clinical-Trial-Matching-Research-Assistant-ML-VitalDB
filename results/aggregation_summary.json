@@ -1,0 +1,393 @@
+{
+  "dataset_version": "1.0.1",
+  "window_minutes": 10.0,
+  "expected_interval_s": 2.0,
+  "gap_factor": 3.0,
+  "core_signals": [
+    "Solar8000/HR",
+    "Solar8000/PLETH_SPO2",
+    "Solar8000/RR_CO2"
+  ],
+  "optional_signals": [
+    "Solar8000/ART_MBP"
+  ],
+  "interpolation": "none",
+  "fill": "none",
+  "low_coverage_threshold": 0.5,
+  "cases": [
+    {
+      "caseid": 2,
+      "case_duration_s": 15741.0,
+      "case_duration_min": 262.35,
+      "window_minutes": 10.0,
+      "expected_interval_s": 2.0,
+      "gap_factor": 3.0,
+      "n_windows": 27,
+      "signals": {
+        "Solar8000/HR": {
+          "available": true,
+          "required": true,
+          "n_raw_rows": 7568,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        },
+        "Solar8000/PLETH_SPO2": {
+          "available": true,
+          "required": true,
+          "n_raw_rows": 7576,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        },
+        "Solar8000/RR_CO2": {
+          "available": true,
+          "required": true,
+          "n_raw_rows": 7122,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        },
+        "Solar8000/ART_MBP": {
+          "available": false,
+          "required": false,
+          "reason": "track not present in /trks for this case"
+        }
+      },
+      "interpolation": "none",
+      "fill": "none",
+      "resampling": "windowed aggregation only; no value resampling",
+      "csv": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/aggregated/case_2_10min.csv",
+      "plots": {
+        "raw": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/plots/aggregation/case_2__raw_signals.png",
+        "aggregated": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/plots/aggregation/case_2__aggregated_10min.png",
+        "coverage": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/plots/aggregation/case_2__coverage_10min.png"
+      },
+      "stats": {
+        "n_windows": 27,
+        "n_windows_all_core_missing": 1,
+        "per_signal": {
+          "Solar8000/HR": {
+            "n_windows_empty": 1,
+            "n_windows_low_coverage": 1,
+            "coverage_mean_pct": 93.43,
+            "coverage_median_pct": 100.0,
+            "coverage_min_pct": 0.0,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 0.0,
+            "total_gap_seconds": 0.0
+          },
+          "Solar8000/PLETH_SPO2": {
+            "n_windows_empty": 1,
+            "n_windows_low_coverage": 1,
+            "coverage_mean_pct": 93.53,
+            "coverage_median_pct": 100.0,
+            "coverage_min_pct": 0.0,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 88.0,
+            "total_gap_seconds": 160.0
+          },
+          "Solar8000/RR_CO2": {
+            "n_windows_empty": 2,
+            "n_windows_low_coverage": 1,
+            "coverage_mean_pct": 87.93,
+            "coverage_median_pct": 100.0,
+            "coverage_min_pct": 0.0,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 17.997,
+            "total_gap_seconds": 15.997,
+            "rr_co2_zero_count": 7
+          },
+          "Solar8000/ART_MBP": {
+            "n_windows_empty": 27,
+            "n_windows_low_coverage": 0,
+            "coverage_mean_pct": 0.0,
+            "coverage_median_pct": 0.0,
+            "coverage_min_pct": 0.0,
+            "coverage_max_pct": 0.0,
+            "largest_gap_seconds": 0.0,
+            "total_gap_seconds": 0.0
+          }
+        }
+      }
+    },
+    {
+      "caseid": 4,
+      "case_duration_s": 20990.0,
+      "case_duration_min": 349.83,
+      "window_minutes": 10.0,
+      "expected_interval_s": 2.0,
+      "gap_factor": 3.0,
+      "n_windows": 35,
+      "signals": {
+        "Solar8000/HR": {
+          "available": true,
+          "required": true,
+          "n_raw_rows": 10193,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        },
+        "Solar8000/PLETH_SPO2": {
+          "available": true,
+          "required": true,
+          "n_raw_rows": 10184,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        },
+        "Solar8000/RR_CO2": {
+          "available": true,
+          "required": true,
+          "n_raw_rows": 9936,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        },
+        "Solar8000/ART_MBP": {
+          "available": true,
+          "required": false,
+          "n_raw_rows": 10371,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        }
+      },
+      "interpolation": "none",
+      "fill": "none",
+      "resampling": "windowed aggregation only; no value resampling",
+      "csv": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/aggregated/case_4_10min.csv",
+      "plots": {
+        "raw": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/plots/aggregation/case_4__raw_signals.png",
+        "aggregated": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/plots/aggregation/case_4__aggregated_10min.png",
+        "coverage": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/plots/aggregation/case_4__coverage_10min.png"
+      },
+      "stats": {
+        "n_windows": 35,
+        "n_windows_all_core_missing": 0,
+        "per_signal": {
+          "Solar8000/HR": {
+            "n_windows_empty": 0,
+            "n_windows_low_coverage": 1,
+            "coverage_mean_pct": 97.08,
+            "coverage_median_pct": 100.0,
+            "coverage_min_pct": 1.36,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 21.4,
+            "total_gap_seconds": 19.4
+          },
+          "Solar8000/PLETH_SPO2": {
+            "n_windows_empty": 1,
+            "n_windows_low_coverage": 0,
+            "coverage_mean_pct": 96.99,
+            "coverage_median_pct": 100.0,
+            "coverage_min_pct": 0.0,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 21.4,
+            "total_gap_seconds": 19.4
+          },
+          "Solar8000/RR_CO2": {
+            "n_windows_empty": 0,
+            "n_windows_low_coverage": 2,
+            "coverage_mean_pct": 94.63,
+            "coverage_median_pct": 100.0,
+            "coverage_min_pct": 8.0,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 21.4,
+            "total_gap_seconds": 33.4,
+            "rr_co2_zero_count": 0
+          },
+          "Solar8000/ART_MBP": {
+            "n_windows_empty": 0,
+            "n_windows_low_coverage": 0,
+            "coverage_mean_pct": 98.8,
+            "coverage_median_pct": 100.0,
+            "coverage_min_pct": 61.69,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 228.0,
+            "total_gap_seconds": 245.4
+          }
+        }
+      }
+    },
+    {
+      "caseid": 8,
+      "case_duration_s": 5918.0,
+      "case_duration_min": 98.63,
+      "window_minutes": 10.0,
+      "expected_interval_s": 2.0,
+      "gap_factor": 3.0,
+      "n_windows": 10,
+      "signals": {
+        "Solar8000/HR": {
+          "available": true,
+          "required": true,
+          "n_raw_rows": 2616,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        },
+        "Solar8000/PLETH_SPO2": {
+          "available": true,
+          "required": true,
+          "n_raw_rows": 2703,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        },
+        "Solar8000/RR_CO2": {
+          "available": true,
+          "required": true,
+          "n_raw_rows": 2482,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        },
+        "Solar8000/ART_MBP": {
+          "available": false,
+          "required": false,
+          "reason": "track not present in /trks for this case"
+        }
+      },
+      "interpolation": "none",
+      "fill": "none",
+      "resampling": "windowed aggregation only; no value resampling",
+      "csv": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/aggregated/case_8_10min.csv",
+      "plots": {
+        "raw": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/plots/aggregation/case_8__raw_signals.png",
+        "aggregated": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/plots/aggregation/case_8__aggregated_10min.png",
+        "coverage": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/plots/aggregation/case_8__coverage_10min.png"
+      },
+      "stats": {
+        "n_windows": 10,
+        "n_windows_all_core_missing": 0,
+        "per_signal": {
+          "Solar8000/HR": {
+            "n_windows_empty": 1,
+            "n_windows_low_coverage": 0,
+            "coverage_mean_pct": 87.2,
+            "coverage_median_pct": 100.0,
+            "coverage_min_pct": 0.0,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 84.0,
+            "total_gap_seconds": 82.0
+          },
+          "Solar8000/PLETH_SPO2": {
+            "n_windows_empty": 0,
+            "n_windows_low_coverage": 1,
+            "coverage_mean_pct": 90.22,
+            "coverage_median_pct": 100.0,
+            "coverage_min_pct": 8.49,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 80.0,
+            "total_gap_seconds": 96.0
+          },
+          "Solar8000/RR_CO2": {
+            "n_windows_empty": 1,
+            "n_windows_low_coverage": 1,
+            "coverage_mean_pct": 82.73,
+            "coverage_median_pct": 100.0,
+            "coverage_min_pct": 0.0,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 0.0,
+            "total_gap_seconds": 0.0,
+            "rr_co2_zero_count": 0
+          },
+          "Solar8000/ART_MBP": {
+            "n_windows_empty": 10,
+            "n_windows_low_coverage": 0,
+            "coverage_mean_pct": 0.0,
+            "coverage_median_pct": 0.0,
+            "coverage_min_pct": 0.0,
+            "coverage_max_pct": 0.0,
+            "largest_gap_seconds": 0.0,
+            "total_gap_seconds": 0.0
+          }
+        }
+      }
+    },
+    {
+      "caseid": 9,
+      "case_duration_s": 4481.0,
+      "case_duration_min": 74.68,
+      "window_minutes": 10.0,
+      "expected_interval_s": 2.0,
+      "gap_factor": 3.0,
+      "n_windows": 8,
+      "signals": {
+        "Solar8000/HR": {
+          "available": true,
+          "required": true,
+          "n_raw_rows": 1940,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        },
+        "Solar8000/PLETH_SPO2": {
+          "available": true,
+          "required": true,
+          "n_raw_rows": 1967,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        },
+        "Solar8000/RR_CO2": {
+          "available": true,
+          "required": true,
+          "n_raw_rows": 1573,
+          "median_dt_s": 2.0,
+          "observed_sampling_hz": 0.5
+        },
+        "Solar8000/ART_MBP": {
+          "available": false,
+          "required": false,
+          "reason": "track not present in /trks for this case"
+        }
+      },
+      "interpolation": "none",
+      "fill": "none",
+      "resampling": "windowed aggregation only; no value resampling",
+      "csv": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/aggregated/case_9_10min.csv",
+      "plots": {
+        "raw": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/plots/aggregation/case_9__raw_signals.png",
+        "aggregated": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/plots/aggregation/case_9__aggregated_10min.png",
+        "coverage": "/Users/crimsonvolkov/Projects/Clinical-Trial-Matching-Reasearch-Assistant-ML-VitalDB/results/plots/aggregation/case_9__coverage_10min.png"
+      },
+      "stats": {
+        "n_windows": 8,
+        "n_windows_all_core_missing": 1,
+        "per_signal": {
+          "Solar8000/HR": {
+            "n_windows_empty": 1,
+            "n_windows_low_coverage": 1,
+            "coverage_mean_pct": 80.83,
+            "coverage_median_pct": 100.0,
+            "coverage_min_pct": 0.0,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 0.0,
+            "total_gap_seconds": 0.0
+          },
+          "Solar8000/PLETH_SPO2": {
+            "n_windows_empty": 1,
+            "n_windows_low_coverage": 0,
+            "coverage_mean_pct": 81.96,
+            "coverage_median_pct": 100.0,
+            "coverage_min_pct": 0.0,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 36.01,
+            "total_gap_seconds": 44.01
+          },
+          "Solar8000/RR_CO2": {
+            "n_windows_empty": 1,
+            "n_windows_low_coverage": 2,
+            "coverage_mean_pct": 65.54,
+            "coverage_median_pct": 95.0,
+            "coverage_min_pct": 0.0,
+            "coverage_max_pct": 100.0,
+            "largest_gap_seconds": 0.0,
+            "total_gap_seconds": 0.0,
+            "rr_co2_zero_count": 0
+          },
+          "Solar8000/ART_MBP": {
+            "n_windows_empty": 8,
+            "n_windows_low_coverage": 0,
+            "coverage_mean_pct": 0.0,
+            "coverage_median_pct": 0.0,
+            "coverage_min_pct": 0.0,
+            "coverage_max_pct": 0.0,
+            "largest_gap_seconds": 0.0,
+            "total_gap_seconds": 0.0
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+{
+  "experiment": "coverage_feature_ablation",
+  "question": "Do the anomaly flags change when the three coverage features are removed, holding everything else identical?",
+  "interpretation": "Both variants rank windows by how unusual their feature pattern is. A flagged window is a statistically unusual monitoring window, NOT an adverse event and NOT a clinical finding. No ground truth exists here, so no supervised performance measure is reported.",
+  "config": {
+    "contamination": 0.1,
+    "random_state": 20260816,
+    "n_estimators": 200,
+    "model_a_features": [
+      "hr_mean",
+      "hr_std",
+      "hr_min",
+      "hr_max",
+      "hr_delta",
+      "hr_coverage_pct",
+      "spo2_mean",
+      "spo2_std",
+      "spo2_min",
+      "spo2_max",
+      "spo2_delta",
+      "spo2_coverage_pct",
+      "rr_mean",
+      "rr_std",
+      "rr_min",
+      "rr_max",
+      "rr_delta",
+      "rr_coverage_pct"
+    ],
+    "model_b_features": [
+      "hr_mean",
+      "hr_std",
+      "hr_min",
+      "hr_max",
+      "hr_delta",
+      "spo2_mean",
+      "spo2_std",
+      "spo2_min",
+      "spo2_max",
+      "spo2_delta",
+      "rr_mean",
+      "rr_std",
+      "rr_min",
+      "rr_max",
+      "rr_delta"
+    ],
+    "removed_features": [
+      "hr_coverage_pct",
+      "spo2_coverage_pct",
+      "rr_coverage_pct"
+    ],
+    "held_identical": [
+      "selected rows",
+      "seed",
+      "contamination",
+      "n_estimators",
+      "feature values",
+      "no standardization",
+      "no imputation"
+    ]
+  },
+  "data_selection": {
+    "rows_in_feature_table": 158,
+    "rows_window_usable": 139,
+    "rows_excluded_unusable_window": 19,
+    "rows_excluded_null_feature": 4,
+    "rows_analyzed": 135,
+    "null_counts_among_usable_rows": {
+      "rr_delta": 4
+    },
+    "excluded_null_windows": [
+      {
+        "caseid": 2,
+        "window_index": 2,
+        "window_start_s": 600,
+        "window_end_s": 900
+      },
+      {
+        "caseid": 4,
+        "window_index": 2,
+        "window_start_s": 600,
+        "window_end_s": 900
+      },
+      {
+        "caseid": 8,
+        "window_index": 1,
+        "window_start_s": 300,
+        "window_end_s": 600
+      },
+      {
+        "caseid": 9,
+        "window_index": 2,
+        "window_start_s": 600,
+        "window_end_s": 900
+      }
+    ],
+    "imputation": "none \u2014 rows with a null feature are excluded, not filled"
+  },
+  "model_a": {
+    "n_features": 18,
+    "windows_analyzed": 135,
+    "windows_flagged": 14
+  },
+  "model_b": {
+    "n_features": 15,
+    "windows_analyzed": 135,
+    "windows_flagged": 14
+  },
+  "transitions": {
+    "flagged in both": 11,
+    "flagged -> not flagged": 3,
+    "not flagged -> flagged": 3,
+    "flagged in neither": 118
+  },
+  "rank_agreement": {
+    "spearman_rank_correlation": 0.956,
+    "top10_overlap": 7,
+    "mean_abs_rank_change": 5.27,
+    "max_abs_rank_change": 86
+  },
+  "per_case": [
+    {
+      "caseid": 2,
+      "analyzed": 46,
+      "flagged_a": 0,
+      "flagged_b": 0,
+      "change": 0
+    },
+    {
+      "caseid": 4,
+      "analyzed": 65,
+      "flagged_a": 9,
+      "flagged_b": 8,
+      "change": -1
+    },
+    {
+      "caseid": 8,
+      "analyzed": 15,
+      "flagged_a": 4,
+      "flagged_b": 6,
+      "change": 2
+    },
+    {
+      "caseid": 9,
+      "analyzed": 9,
+      "flagged_a": 1,
+      "flagged_b": 0,
+      "change": -1
+    }
+  ],
+  "case4_cluster": {
+    "caseid": 4,
+    "range_min": [
+      285.0,
+      340.0
+    ],
+    "windows_in_range": 11,
+    "flagged_model_a": 9,
+    "flagged_model_b": 8,
+    "window_indices_a": [
+      62,
+      67,
+      64,
+      63,
+      61,
+      66,
+      57,
+      60,
+      65
+    ],
+    "window_indices_b": [
+      62,
+      67,
+      64,
+      63,
+      61,
+      66,
+      60,
+      65
+    ]
+  },
+  "case8_window16": {
+    "caseid": 8,
+    "window_index": 16,
+    "present": true,
+    "score_a": 0.024604,
+    "score_b": -0.039696,
+    "rank_a": 9,
+    "rank_b": 26,
+    "flagged_a": true,
+    "flagged_b": false,
+    "transition": "flagged -> not flagged"
+  },
+  "coverage_profile": {
+    "analyzed_population": {
+      "n_analyzed": 135,
+      "at_full_coverage": 129,
+      "below_100pct_coverage": 6
+    },
+    "model_a": {
+      "n_flagged": 14,
+      "flagged_with_full_coverage": 10,
+      "flagged_below_100pct_coverage": 4,
+      "flagged_below_90pct_coverage": 2,
+      "min_coverage_of_flagged": 72.67
+    },
+    "model_b": {
+      "n_flagged": 14,
+      "flagged_with_full_coverage": 13,
+      "flagged_below_100pct_coverage": 1,
+      "flagged_below_90pct_coverage": 0,
+      "min_coverage_of_flagged": 95.33
+    }
+  },
+  "top10_model_a": [
+    {
+      "caseid": 4,
+      "window_index": 62,
+      "window_start_s": 18600.0,
+      "window_end_s": 18900.0,
+      "anomaly_score": 0.194594,
+      "anomaly_label": 1,
+      "time_range": "310.0-315.0 min"
+    },
+    {
+      "caseid": 8,
+      "window_index": 6,
+      "window_start_s": 1800.0,
+      "window_end_s": 2100.0,
+      "anomaly_score": 0.069469,
+      "anomaly_label": 1,
+      "time_range": "30.0-35.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 67,
+      "window_start_s": 20100.0,
+      "window_end_s": 20400.0,
+      "anomaly_score": 0.057003,
+      "anomaly_label": 1,
+      "time_range": "335.0-340.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 64,
+      "window_start_s": 19200.0,
+      "window_end_s": 19500.0,
+      "anomaly_score": 0.054526,
+      "anomaly_label": 1,
+      "time_range": "320.0-325.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 63,
+      "window_start_s": 18900.0,
+      "window_end_s": 19200.0,
+      "anomaly_score": 0.042148,
+      "anomaly_label": 1,
+      "time_range": "315.0-320.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 61,
+      "window_start_s": 18300.0,
+      "window_end_s": 18600.0,
+      "anomaly_score": 0.029673,
+      "anomaly_label": 1,
+      "time_range": "305.0-310.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 66,
+      "window_start_s": 19800.0,
+      "window_end_s": 20100.0,
+      "anomaly_score": 0.029261,
+      "anomaly_label": 1,
+      "time_range": "330.0-335.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 57,
+      "window_start_s": 17100.0,
+      "window_end_s": 17400.0,
+      "anomaly_score": 0.027912,
+      "anomaly_label": 1,
+      "time_range": "285.0-290.0 min"
+    },
+    {
+      "caseid": 8,
+      "window_index": 16,
+      "window_start_s": 4800.0,
+      "window_end_s": 5100.0,
+      "anomaly_score": 0.024604,
+      "anomaly_label": 1,
+      "time_range": "80.0-85.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 60,
+      "window_start_s": 18000.0,
+      "window_end_s": 18300.0,
+      "anomaly_score": 0.02052,
+      "anomaly_label": 1,
+      "time_range": "300.0-305.0 min"
+    }
+  ],
+  "top10_model_b": [
+    {
+      "caseid": 4,
+      "window_index": 62,
+      "window_start_s": 18600.0,
+      "window_end_s": 18900.0,
+      "anomaly_score": 0.238905,
+      "anomaly_label": 1,
+      "time_range": "310.0-315.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 64,
+      "window_start_s": 19200.0,
+      "window_end_s": 19500.0,
+      "anomaly_score": 0.104394,
+      "anomaly_label": 1,
+      "time_range": "320.0-325.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 63,
+      "window_start_s": 18900.0,
+      "window_end_s": 19200.0,
+      "anomaly_score": 0.103739,
+      "anomaly_label": 1,
+      "time_range": "315.0-320.0 min"
+    },
+    {
+      "caseid": 8,
+      "window_index": 6,
+      "window_start_s": 1800.0,
+      "window_end_s": 2100.0,
+      "anomaly_score": 0.095499,
+      "anomaly_label": 1,
+      "time_range": "30.0-35.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 61,
+      "window_start_s": 18300.0,
+      "window_end_s": 18600.0,
+      "anomaly_score": 0.090201,
+      "anomaly_label": 1,
+      "time_range": "305.0-310.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 66,
+      "window_start_s": 19800.0,
+      "window_end_s": 20100.0,
+      "anomaly_score": 0.084793,
+      "anomaly_label": 1,
+      "time_range": "330.0-335.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 65,
+      "window_start_s": 19500.0,
+      "window_end_s": 19800.0,
+      "anomaly_score": 0.080977,
+      "anomaly_label": 1,
+      "time_range": "325.0-330.0 min"
+    },
+    {
+      "caseid": 4,
+      "window_index": 60,
+      "window_start_s": 18000.0,
+      "window_end_s": 18300.0,
+      "anomaly_score": 0.070714,
+      "anomaly_label": 1,
+      "time_range": "300.0-305.0 min"
+    },
+    {
+      "caseid": 8,
+      "window_index": 11,
+      "window_start_s": 3300.0,
+      "window_end_s": 3600.0,
+      "anomaly_score": 0.056455,
+      "anomaly_label": 1,
+      "time_range": "55.0-60.0 min"
+    },
+    {
+      "caseid": 8,
+      "window_index": 2,
+      "window_start_s": 600.0,
+      "window_end_s": 900.0,
+      "anomaly_score": 0.047437,
+      "anomaly_label": 1,
+      "time_range": "10.0-15.0 min"
+    }
+  ]
+}

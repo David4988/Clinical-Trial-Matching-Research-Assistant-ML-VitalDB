@@ -1,0 +1,32 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+.pytest_cache/
+
+# Raw VitalDB payloads are reproducible from the public API and large
+# (trks.csv alone is ~29 MB, labs.csv ~19 MB).
+data/raw/
+data/processed/
+
+# Derived results ARE published so the findings can be inspected without
+# VitalDB API access. Two exceptions:
+#   - the fitted model is a 2 MB binary that changes on every rerun
+#   - the run log is machine-local noise
+results/**/*.joblib
+results/audit.log
+
+# Internal working document, not part of the deliverable.
+Plan by claude.rtf
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
