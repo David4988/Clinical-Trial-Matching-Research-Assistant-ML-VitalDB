@@ -18,22 +18,26 @@ def get_llm_config() -> dict:
         ConfigError: If the API key is missing or the provider is unknown.
     """
     provider = os.getenv("XAI_PROVIDER", "gemini").lower()
+    xai_mode = os.getenv("XAI_MODE", "hybrid").lower()
+    
+    if xai_mode not in ("deterministic", "llm", "hybrid"):
+        raise ConfigError(f"Unknown XAI_MODE: {xai_mode}")
     
     # Defaults
     if provider == "gemini":
         model = os.getenv("XAI_MODEL", "gemini-3.6-flash")
         api_key = os.getenv("GEMINI_API_KEY")
-        if not api_key:
+        if not api_key and xai_mode != "deterministic":
             raise ConfigError("GEMINI_API_KEY environment variable is required for Gemini provider.")
     elif provider == "openai":
         model = os.getenv("XAI_MODEL", "gpt-4o-mini")
         api_key = os.getenv("OPENAI_API_KEY")
-        if not api_key:
+        if not api_key and xai_mode != "deterministic":
             raise ConfigError("OPENAI_API_KEY environment variable is required for OpenAI provider.")
     elif provider == "anthropic":
         model = os.getenv("XAI_MODEL", "claude-3-5-haiku-20241022")
         api_key = os.getenv("ANTHROPIC_API_KEY")
-        if not api_key:
+        if not api_key and xai_mode != "deterministic":
             raise ConfigError("ANTHROPIC_API_KEY environment variable is required for Anthropic provider.")
     else:
         raise ConfigError(f"Unknown XAI_PROVIDER: {provider}")
@@ -42,4 +46,5 @@ def get_llm_config() -> dict:
         "provider": provider,
         "model": model,
         "api_key": api_key,
+        "xai_mode": xai_mode,
     }

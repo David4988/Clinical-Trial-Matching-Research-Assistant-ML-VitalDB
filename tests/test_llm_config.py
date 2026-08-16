@@ -12,6 +12,7 @@ def test_get_llm_config_gemini_default():
         assert config["provider"] == "gemini"
         assert config["model"] == "gemini-3.6-flash"
         assert config["api_key"] == "test_key"
+        assert config["xai_mode"] == "hybrid"
 
 def test_get_llm_config_gemini_missing_key():
     with mock.patch.dict(os.environ, {}, clear=True):
@@ -24,6 +25,7 @@ def test_get_llm_config_openai():
         assert config["provider"] == "openai"
         assert config["model"] == "gpt-4o-mini"
         assert config["api_key"] == "sk-test"
+        assert config["xai_mode"] == "hybrid"
 
 def test_get_llm_config_anthropic():
     with mock.patch.dict(os.environ, {"XAI_PROVIDER": "anthropic", "ANTHROPIC_API_KEY": "ant-test"}, clear=True):
@@ -31,6 +33,7 @@ def test_get_llm_config_anthropic():
         assert config["provider"] == "anthropic"
         assert config["model"] == "claude-3-5-haiku-20241022"
         assert config["api_key"] == "ant-test"
+        assert config["xai_mode"] == "hybrid"
 
 def test_get_llm_config_unknown_provider():
     with mock.patch.dict(os.environ, {"XAI_PROVIDER": "unknown"}, clear=True):

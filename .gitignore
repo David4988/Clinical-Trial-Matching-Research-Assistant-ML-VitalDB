@@ -30,3 +30,6 @@ Plan by claude.rtf
 *.swo
 .DS_Store
 Thumbs.db
+
+# Local environment variables
+.env.local

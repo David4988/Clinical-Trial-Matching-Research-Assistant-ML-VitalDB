@@ -1,0 +1,45 @@
+================================================================================
+LLM XAI PIPELINE RUN REPORT
+================================================================================
+Total windows processed : 14
+Successful LLM          : 13
+Failed LLM              : 1
+Cache Hits              : 0
+Cache Misses            : 14
+Total API Calls         : 15
+Schema Validation Fails : 1
+Average Latency         : 8696.85 ms
+Median Latency          : 8216.00 ms
+--------------------------------------------------------------------------------
+
+[STRONGEST ANOMALY]
+Case 4, Window 62
+Rank 1, Score 0.2389
+Status: success
+Headline (Deterministic): The model flagged this window. The supplied evidence shows within-window instability in RR and SpO2, most prominently RR.
+LLM Summary:
+The model flagged this window. The supplied evidence shows a mean shift in heart rate alongside statistically unusual variability in SpO2 and respiratory rate between 310.0 and 315.0 minutes from case start.
+
+[MULTI-SIGNAL ANOMALY]
+Case 4, Window 62
+Rank 1, Score 0.2389
+Status: success
+Headline (Deterministic): The model flagged this window. The supplied evidence shows within-window instability in RR and SpO2, most prominently RR.
+LLM Summary:
+The model flagged this window. The supplied evidence shows a mean shift in heart rate alongside statistically unusual variability in SpO2 and respiratory rate between 310.0 and 315.0 minutes from case start.
+
+[DISPERSION-DRIVEN ANOMALY]
+Case 4, Window 64
+Rank 2, Score 0.1044
+Status: success
+Headline (Deterministic): The model flagged this window. The supplied evidence shows RR had unusually large within-window variability.
+LLM Summary:
+The model flagged this window. The supplied evidence shows that during the 320.0-325.0 minute period, respiratory rate variability was unusually high while signal means across all metrics showed no statistical change.
+
+[AMBIGUOUS EXAMPLE]
+Case 8, Window 4
+Rank 14, Score 0.0029
+Status: success
+Headline (Deterministic): The model flagged this window. The supplied evidence shows HR had unusually large within-window variability.
+LLM Summary:
+The model flagged this window. The supplied evidence shows that during the 20.0 to 25.0 minute interval, heart rate variability was unusually high while overall signal mean levels did not show a statistical shift.

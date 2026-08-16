@@ -1,0 +1,166 @@
+{
+  "f5fb45f9b15433e304f29fe33675212625bbc1db9e8ab208d6a9064fce0e602e": {
+    "summary": "From 325.0 to 330.0 minutes from case start, heart rate and respiratory rate showed statistically unusual within-window variability, while mean values across all signals remained stable.",
+    "key_evidence": [
+      "Heart rate mean was 95.92 bpm (range: 92.0 to 138.0 bpm) with an unusually high standard deviation of 5.7726 bpm, exceeding the statistical threshold of 4.8989.",
+      "Respiratory rate mean was 17.96 breaths/min (range: 8.0 to 24.0 breaths/min) with an unusually high standard deviation of 4.7202 breaths/min, exceeding the threshold of 2.569.",
+      "SpO2 stayed constant at a mean of 100.0% with a standard deviation of 0.0%.",
+      "No significant shifts in baseline mean values were detected for heart rate (delta: +0.5533 bpm), SpO2 (delta: +0.2067%), or respiratory rate (delta: +1.7933 breaths/min)."
+    ],
+    "data_quality": "Data quality is sufficient, with 100.0% coverage across all core signals.",
+    "uncertainty": "Identified statistical anomalies represent dispersion exceeding upper Tukey fences over reference windows and do not reflect confirmed signal trends.",
+    "not_a_diagnosis": "This output is a statistical analysis of physiological monitoring data and NOT a clinical diagnosis or determination of an adverse event."
+  },
+  "0e53164eb40f080c62938c04a5c0dedbb183915db50ee252c2a87760632b7be6": {
+    "summary": "The model flagged this window. The supplied evidence shows a mean shift in heart rate alongside statistically unusual variability in SpO2 and respiratory rate between 310.0 and 315.0 minutes from case start.",
+    "key_evidence": [
+      "Heart rate mean shifted downward from 101.46 bpm to 99.6933 bpm (delta: -1.7667 bpm; range: 98.0 to 101.0 bpm).",
+      "SpO2 mean decreased from 99.8533% to 99.2867% (range: 81.0% to 100.0%); its within-window variability was unusually high with a standard deviation of 3.1052% exceeding the threshold of 0.9954%.",
+      "Respiratory rate mean increased from 11.42 breaths/min to 16.7533 breaths/min (range: 5.0 to 33.0 breaths/min); its within-window variability was unusually high with a standard deviation of 8.9412 breaths/min exceeding the threshold of 2.569 breaths/min."
+    ],
+    "data_quality": "Data quality is sufficient. All 3 core signals (HR, SpO2, RR) were usable with 100.0% coverage.",
+    "uncertainty": "The window received an anomaly score of 0.2389 (rank 1). Heart rate mean shifted beyond its within-window variability, whereas SpO2 and respiratory rate mean changes remained within their within-window variability despite having unusually high dispersion.",
+    "not_a_diagnosis": "This is a statistical analysis of monitoring data and NOT a clinical diagnosis or determination of an adverse event."
+  },
+  "e9235b216029ee6f66fc9c655173affa261a28c0d6246c83ea7e3146b5ba0ec8": {
+    "summary": "The model flagged this window. The supplied evidence shows that during the 320.0-325.0 minute period, respiratory rate variability was unusually high while signal means across all metrics showed no statistical change.",
+    "key_evidence": [
+      "Respiratory rate variability was unusually high with a within-window standard deviation of 5.8441 breaths/min (min: 6.0, max: 26.0 breaths/min), exceeding the threshold of 2.569 breaths/min.",
+      "Respiratory rate mean shifted by -4.1866 breaths/min (from 20.3533 to 16.1667 breaths/min), which remained within expected within-window variability.",
+      "Heart rate averaged 95.3667 bpm (std: 2.1964 bpm, range: 93.0-109.0 bpm) with a delta of -1.6 bpm, remaining within normal dispersion ranges.",
+      "SpO2 averaged 99.7933% (std: 0.7797%, range: 94.0-100.0%) with a delta of -0.14%, showing no unusual change or dispersion."
+    ],
+    "data_quality": "Data quality is sufficient, with 100.0% signal coverage across all 3 core signals.",
+    "uncertainty": "Statistical thresholds are based on dynamic baseline windows (anomaly score 0.1044). The anomaly score reflects statistical deviation from previous reference windows and is not a probability of illness.",
+    "not_a_diagnosis": "This is a statistical analysis of monitoring data and NOT a clinical diagnosis or determination of an adverse event."
+  },
+  "a08b5c1edb4c0c29901ab2b42ab09a8e2cb6fea9313379d26db1506acaffca2e": {
+    "summary": "The model flagged this window. The supplied evidence shows that during the 315.0 to 320.0 minute interval, heart rate mean shifted downward to 96.9667 bpm and respiratory rate variability was unusually high.",
+    "key_evidence": [
+      "The model flagged this window. The supplied evidence shows heart rate mean shifted downward by 2.7266 bpm (from 99.6933 bpm to 96.9667 bpm), exceeding its within-window variability.",
+      "Respiratory rate variability was unusually high with a standard deviation of 3.3098 breaths/min, exceeding the upper threshold of 2.569 breaths/min.",
+      "SpO2 mean was 99.9333% with a standard deviation of 0.2758%, remaining within baseline variability."
+    ],
+    "data_quality": "Data quality is sufficient, with 100.0% signal coverage across all core signals and 62 consecutive usable windows.",
+    "uncertainty": "The anomaly score of 0.1037 reflects statistical unusualness compared to baseline windows and is not a probability of illness.",
+    "not_a_diagnosis": "This summary is a statistical analysis of physiological monitoring data and does not constitute a clinical diagnosis or determination of an adverse event."
+  },
+  "3a16d504f559399b6ee420c6c49d148622e6ca5536478e9acf0f0332298b6b08": {
+    "summary": "The model flagged this window. The supplied evidence shows a slight mean shift in SpO2 from 97.8867% to 97.1533%, while heart rate and respiratory rate remained largely unchanged.",
+    "key_evidence": [
+      "SpO2 mean shifted downwards by 0.7334% from 97.8867% to 97.1533%, exceeding its within-window variability.",
+      "Heart rate mean decreased by 1.3867 bpm (from 55.8467 bpm to 54.46 bpm), which was within normal within-window variability.",
+      "Respiratory rate remained unchanged at 10.0 breaths/min with a standard deviation of 0.0.",
+      "No signals demonstrated statistically unusual dispersion in this 5-minute window."
+    ],
+    "data_quality": "Data quality is sufficient, with 100% coverage across all three core signals.",
+    "uncertainty": "Analysis relies on statistical baseline deviations within a 5-minute interval (anomaly score 0.0955, rank 4) and does not represent probability of illness.",
+    "not_a_diagnosis": "This output is a statistical analysis of monitoring data and does not constitute a clinical diagnosis or a determination of an adverse event."
+  },
+  "611ea2522961c25be35146ca8a39b136ac9ba35bf5ea7e1b7e9a44ff11dd4411": {
+    "summary": "The model flagged this window. The supplied evidence shows an anomaly score of 0.0902 (rank 5) during minutes 305.0 to 310.0, driven by unusually high variability in respiratory rate despite signal mean changes staying within expected bounds.",
+    "key_evidence": [
+      "The model flagged this window. The supplied evidence shows respiratory rate variability was unusually high, with a standard deviation of 5.0703 breaths/min exceeding the upper threshold of 2.569.",
+      "Respiratory rate mean dropped from 15.0533 to 11.42 breaths/min (delta of -3.6333 breaths/min), ranging from 4.0 to 20.0 breaths/min.",
+      "Heart rate mean changed slightly from 103.4133 to 101.46 bpm (delta of -1.9533 bpm, std 1.6205 bpm) with normal variability.",
+      "Oxygen saturation mean was 99.8533% (delta of -0.1467%, std 0.5231%) with normal variability."
+    ],
+    "data_quality": "Data quality is sufficient.",
+    "uncertainty": "Analysis reflects 60 consecutive usable windows; mean shifts remained within expected within-window variability, while respiratory rate dispersion exceeded historical thresholds.",
+    "not_a_diagnosis": "This output is a statistical evaluation of physiological monitoring data and does not constitute a clinical diagnosis or an assessment of an adverse event."
+  },
+  "9bf57ced3909bd4d13a8d52ffc3c29716b93d84c1f9be444b902f51db2203477": {
+    "summary": "The model flagged this window. The supplied evidence shows that between 330.0 and 335.0 minutes, mean signal values remained stable while respiratory rate variability was unusually high.",
+    "key_evidence": [
+      "Heart rate mean was 97.29 bpm (min: 91.0, max: 148.0, delta: +1.37 bpm from previous mean of 95.92 bpm), which is within expected within-window variability.",
+      "Oxygen saturation (SpO2) mean was 99.83% (min: 96.0%, max: 100.0%, delta: -0.17% from previous mean of 100.0%), showing no mean shift.",
+      "Respiratory rate mean was 18.03 breaths/min (min: 13.0, max: 24.0, delta: +0.07 breaths/min from previous mean of 17.96 breaths/min).",
+      "Respiratory rate variability was unusually high, with a standard deviation of 3.43 breaths/min exceeding the threshold of 2.57 breaths/min."
+    ],
+    "data_quality": "Data quality is sufficient.",
+    "uncertainty": "Analysis relies on relative statistical thresholds derived from 65 to 67 reference windows, which carry inherent dispersion metrics and mathematical limits.",
+    "not_a_diagnosis": "This is a statistical analysis of monitoring data and NOT a clinical diagnosis or determination of an adverse event."
+  },
+  "e7dd3fac27616168fce8d202a1ff05ebe759a74284e94488894af493a62c5801": {
+    "summary": "The model flagged this window. The supplied evidence shows unusually high within-window variability in heart rate and respiratory rate between 325.0 and 330.0 minutes, while mean values across all signals remained without significant level shifts.",
+    "key_evidence": [
+      "Heart rate dispersion variability was unusually high with a standard deviation of 5.7726 bpm (mean 95.92 bpm, range 92.0 to 138.0 bpm), exceeding the upper threshold of 4.8989 bpm.",
+      "Respiratory rate dispersion variability was unusually high with a standard deviation of 4.7202 breaths/min (mean 17.96 breaths/min, range 8.0 to 24.0 breaths/min), exceeding the upper threshold of 2.569 breaths/min.",
+      "Oxygen saturation (SpO2) remained constant at 100.0% (std 0.0%) with no statistical unusualness in dispersion.",
+      "None of the three core signals demonstrated a mean shift exceeding within-window variability thresholds."
+    ],
+    "data_quality": "Data quality is sufficient with 100.0% coverage across all three core signals and 64 consecutive usable windows.",
+    "uncertainty": "The window received an anomaly score of 0.081 (anomaly rank 7), reflecting statistical variation in signal dispersion rather than a deterministic clinical state.",
+    "not_a_diagnosis": "This is a statistical analysis of physiological monitoring data and is not a clinical diagnosis or determination of an adverse event."
+  },
+  "e3565b4c0127b6ee77a31f7c251dd2dbb51617e795556aefeee7decbf780a42d": {
+    "summary": "The model flagged this window. The supplied evidence shows a mean shift in heart rate alongside unusually high variability in respiratory rate during the 300.0 to 305.0 minute window.",
+    "key_evidence": [
+      "Heart rate mean increased by 19.12 bpm, rising from 84.2933 bpm to 103.4133 bpm (ranging from 96.0 to 149.0 bpm).",
+      "Respiratory rate within-window variability was unusually high with a standard deviation of 4.236 breaths/min, exceeding the threshold of 2.569 breaths/min, despite a minor mean shift from 15.68 to 15.0533 breaths/min.",
+      "SpO2 stayed constant at a mean of 100.0% with zero standard deviation."
+    ],
+    "data_quality": "Data quality is sufficient, with 100.0% signal coverage across all three core signals and 59 consecutive usable windows.",
+    "uncertainty": "The window received an anomaly score of 0.0707 (rank 8) based on statistical deviations from reference data; this score does not represent a probability of medical illness.",
+    "not_a_diagnosis": "This summary is a statistical evaluation of automated monitoring data and does not constitute a clinical diagnosis or a determination of an adverse event."
+  },
+  "c7a1525acfd93edbea0d68a67865e68011a32587e8ef39bf95708aeee02f3e40": {
+    "summary": "The model flagged this window. The supplied evidence shows that during the 55.0-60.0 minute window, heart rate variability was unusually high while mean values for heart rate, SpO2, and respiratory rate remained stable compared to the preceding window.",
+    "key_evidence": [
+      "Heart rate mean shifted from 53.1933 bpm to 55.6667 bpm (delta +2.4734 bpm), and its within-window variability was unusually high with a standard deviation of 10.0886 bpm (min 45.0 bpm, max 139.0 bpm) exceeding the dispersion threshold of 6.0411 bpm.",
+      "SpO2 mean remained stable at 98.9867% compared to 98.9467% in the previous window (delta +0.04%), with a standard deviation of 0.1151%.",
+      "Respiratory rate remained flat at 10.0 breaths/min with zero standard deviation."
+    ],
+    "data_quality": "Data quality is sufficient, with 100.0% coverage across all 3 usable core signals over 11 consecutive usable windows.",
+    "uncertainty": "The window received an anomaly score of 0.0565 (rank 9). The heart rate mean change was classified as normal movement within within-window variability rather than a baseline shift.",
+    "not_a_diagnosis": "This output is a statistical summary of monitoring data and does not constitute a clinical diagnosis or determination of an adverse event."
+  },
+  "fa1bcbf4bf4527e6f2ef549fb93ccfe5d4219fb5bffafc12c56a3cf9fdbfaf62": {
+    "summary": "The model flagged this window. The supplied evidence shows mean shifts in SpO2 (from 99.7987% to 98.2667%) and respiratory rate (from 13.4362 to 10.0 breaths/min) between 10.0 and 15.0 minutes, while heart rate remained steady at 54.6133 bpm.",
+    "key_evidence": [
+      "SpO2 mean decreased by 1.532% from 99.7987% to 98.2667% (range 97.0% to 99.0%, std 0.5754), exceeding within-window variability.",
+      "Respiratory rate mean decreased by 3.4362 breaths/min from 13.4362 to 10.0 breaths/min (range 10.0 to 10.0 breaths/min, std 0.0), exceeding within-window variability.",
+      "Heart rate mean changed minimally by -0.0981 bpm from 54.7114 to 54.6133 bpm (range 52.0 to 62.0 bpm, std 2.1482), which was within normal expected variability.",
+      "Within-window signal dispersions were not unusually high for any signal, though respiratory rate was completely flat (std 0.0)."
+    ],
+    "data_quality": "Data quality is sufficient with 100.0% coverage across all 3 core signals (HR, SpO2, RR).",
+    "uncertainty": "The anomaly score of 0.0474 (rank 10) indicates statistical unusualness relative to earlier windows and is not a probability of illness.",
+    "not_a_diagnosis": "This summary is a statistical evaluation of physiological monitoring data and is not a clinical diagnosis or determination of an adverse event."
+  },
+  "7eebffd8e54bff2672c9c9b51adc9d77f070d42872e332d4533925314fc0051b": {
+    "summary": "The model flagged this window. The supplied evidence shows a mean shifted decrease in SpO2 from 99.2867% to 97.8867%, while heart rate and respiratory rate showed no statistically unusual changes relative to their within-window variability.",
+    "key_evidence": [
+      "SpO2 mean decreased by 1.4% from 99.2867% to 97.8867% (min 96.0%, max 99.0%), which exceeded within-window variability threshold.",
+      "Heart rate mean decreased by 3.3133 bpm from 59.16 bpm to 55.8467 bpm (min 52.0 bpm, max 75.0 bpm), remaining within normal within-window variability.",
+      "Respiratory rate remained constant at 10.0 breaths/min (delta 0.0 breaths/min) with zero variability.",
+      "No signals demonstrated statistically unusual dispersion compared to reference windows."
+    ],
+    "data_quality": "Data quality is sufficient with 100.0% signal coverage across all 3 core signals.",
+    "uncertainty": "The analysis relies on statistical comparisons against prior window variability and reference statistics (anomaly score 0.0394), which does not represent a probability of illness or clinical risk.",
+    "not_a_diagnosis": "This output is a statistical summary of physiological monitoring data and does NOT constitute a clinical diagnosis or a determination of an adverse event."
+  },
+  "0782f036b0c3d3d7b2aa01fe0cab80c96cf2a7371a7c118a1374e081ffc7adbf": {
+    "summary": "The model flagged this window. The supplied evidence shows an increase in mean SpO2 from 97.1533% to 98.6267%, while heart rate and respiratory rate remained stable during the 35.0 to 40.0 minute interval.",
+    "key_evidence": [
+      "SpO2 mean shifted upward by 1.4734% from 97.1533% to 98.6267% (std 0.5378%), exceeding within-window variability.",
+      "Heart rate mean changed slightly from 54.46 bpm to 54.1333 bpm (delta -0.3267 bpm, std 2.6789 bpm), remaining within normal variability.",
+      "Respiratory rate remained constant at 10.0 breaths/min (std 0.0).",
+      "None of the signals exhibited unusual variability or dispersion."
+    ],
+    "data_quality": "Data quality is sufficient, with 100.0% coverage across all 3 core signals.",
+    "uncertainty": "This statistical analysis evaluates deviations relative to reference windows (anomaly score 0.0113, rank 13) and does not represent a probability of illness.",
+    "not_a_diagnosis": "This output is a statistical analysis of physiological monitoring data and does not constitute a clinical diagnosis or determination of an adverse event."
+  },
+  "6c565a044f3d2b30d9ea32aaba0cdad4ec5212e2ada807f6ff2eace3b5a4090a": {
+    "summary": "The model flagged this window. The supplied evidence shows that during the 20.0 to 25.0 minute interval, heart rate variability was unusually high while overall signal mean levels did not show a statistical shift.",
+    "key_evidence": [
+      "Heart rate mean was 59.16 bpm (previous window mean 53.0867 bpm) with a range of 47.0 to 104.0 bpm and a standard deviation of 8.4338 bpm, exceeding the dispersion threshold of 6.0411 bpm.",
+      "SpO2 mean was 99.2867% (previous window mean 99.68%) with a range of 98.0% to 100.0% and a standard deviation of 0.5225%, which remained within normal dispersion limits.",
+      "Respiratory rate was constant at 10.0 breaths/min with a standard deviation of 0.0 breaths/min.",
+      "None of the core signals met the threshold for a mean shift across windows."
+    ],
+    "data_quality": "Data quality is sufficient, with 100.0% signal coverage across all core signals.",
+    "uncertainty": "The anomaly score of 0.0029 (rank 14) reflects statistical deviation in heart rate dispersion relative to case reference windows and is not a probability of illness.",
+    "not_a_diagnosis": "This output is a statistical analysis of physiological monitoring data and is NOT a clinical diagnosis or a determination of an adverse event."
+  }
+}

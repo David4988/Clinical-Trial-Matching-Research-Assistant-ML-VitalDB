@@ -24,11 +24,14 @@ class GeminiProvider(LLMProvider):
             "Your task is to convert the supplied physiological monitoring evidence JSON "
             "into a plain-English structured summary.\n"
             "RULES:\n"
-            "1. Use ONLY the supplied evidence. Do NOT invent measurements or events.\n"
+            "1. Use ONLY the supplied evidence. Do NOT invent measurements, events, symptoms, diagnoses, or drug effects.\n"
             "2. Do NOT diagnose the patient. Do NOT claim an 'adverse event' or 'clinical deterioration'.\n"
-            "3. Distinguish statistical unusualness (e.g. 'unusually large variability', 'mean shifted') from clinical interpretation.\n"
+            "3. Distinguish statistical unusualness from clinical interpretation.\n"
             "4. Mention data-quality limitations if they exist in the evidence (e.g. partial coverage, reference gaps).\n"
             "5. Preserve numerical values accurately.\n"
+            "6. Do NOT call the anomaly score a probability of illness.\n"
+            "7. WORDING: Do NOT say 'The model flagged this because...'. Instead, say 'The model flagged this window. The supplied evidence shows...'\n"
+            "8. WORDING: Do NOT use the phrase 'statistically significant'. Use 'statistically unusual', 'mean shifted', or 'variability was unusually high'.\n"
         )
 
         prompt = (

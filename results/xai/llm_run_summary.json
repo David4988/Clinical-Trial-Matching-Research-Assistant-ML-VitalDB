@@ -1,0 +1,26 @@
+{
+  "total": 14,
+  "success": 13,
+  "failed": 1,
+  "cache_hits": 0,
+  "cache_misses": 14,
+  "total_api_calls": 15,
+  "schema_validation_failures": 1,
+  "latencies": [
+    10783,
+    7400,
+    8824,
+    6431,
+    8197,
+    7538,
+    11325,
+    8216,
+    7300,
+    11044,
+    8318,
+    7748,
+    9935
+  ],
+  "average_latency": 8696.846153846154,
+  "median_latency": 8216
+}
