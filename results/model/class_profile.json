@@ -1,0 +1,233 @@
+{
+  "report": "descriptive_class_profile",
+  "model": "Isolation Forest, Model B: 15 physiological features, coverage features excluded as model inputs",
+  "ground_truth": "none available. This is an unsupervised model, so there is nothing for a prediction to be correct or incorrect against. No supervised performance measure and no confusion matrix is reported, because none of them are defined for this experiment.",
+  "interpretation": "'flagged' means statistically unusual relative to the other windows in this dataset. It does NOT mean an adverse event, deterioration, or any clinically validated finding.",
+  "support": {
+    "classes": [
+      {
+        "class": "flagged",
+        "meaning": "statistically unusual monitoring window",
+        "support": 14,
+        "pct_of_analyzed": 10.37
+      },
+      {
+        "class": "not_flagged",
+        "meaning": "window not separated from the population by the model",
+        "support": 121,
+        "pct_of_analyzed": 89.63
+      }
+    ],
+    "analyzed_total": 135,
+    "not_classified": {
+      "windows_in_feature_table": 158,
+      "excluded_window_not_usable": 19,
+      "excluded_null_model_feature": 4,
+      "note": "These windows were never presented to the model. They are not a third class and not errors; they are windows the pipeline declined to model, preserved in the feature table."
+    },
+    "class_balance_note": "The flagged count is set by the contamination parameter (0.10), not discovered by the model. Class sizes are a configuration choice."
+  },
+  "score_distribution_by_class": [
+    {
+      "class": "flagged",
+      "support": 14,
+      "min": 0.002861,
+      "q25": 0.041413,
+      "median": 0.075845,
+      "q75": 0.094174,
+      "max": 0.238905,
+      "mean": 0.07504,
+      "std": 0.057914
+    },
+    {
+      "class": "not_flagged",
+      "support": 121,
+      "min": -0.194051,
+      "q25": -0.173029,
+      "median": -0.140579,
+      "q75": -0.093026,
+      "max": -0.004292,
+      "mean": -0.127384,
+      "std": 0.053353
+    }
+  ],
+  "per_case_composition": [
+    {
+      "caseid": 2,
+      "analyzed": 46,
+      "flagged": 0,
+      "max_score": -0.064061,
+      "median_score": -0.172632,
+      "not_flagged": 46,
+      "pct_flagged": 0.0
+    },
+    {
+      "caseid": 4,
+      "analyzed": 65,
+      "flagged": 8,
+      "max_score": 0.238905,
+      "median_score": -0.130153,
+      "not_flagged": 57,
+      "pct_flagged": 12.31
+    },
+    {
+      "caseid": 8,
+      "analyzed": 15,
+      "flagged": 6,
+      "max_score": 0.095499,
+      "median_score": -0.016994,
+      "not_flagged": 9,
+      "pct_flagged": 40.0
+    },
+    {
+      "caseid": 9,
+      "analyzed": 9,
+      "flagged": 0,
+      "max_score": -0.004292,
+      "median_score": -0.063611,
+      "not_flagged": 9,
+      "pct_flagged": 0.0
+    }
+  ],
+  "feature_separation": {
+    "measure": "Cliff's delta between the flagged and not-flagged windows: a non-parametric effect size in [-1, +1]. Descriptive separation only \u2014 not a performance measure and not feature importance.",
+    "model_features": [
+      {
+        "feature": "spo2_min",
+        "median_flagged": 97.0,
+        "median_not_flagged": 100.0,
+        "cliffs_delta": -0.7769,
+        "separation": "large"
+      },
+      {
+        "feature": "rr_min",
+        "median_flagged": 10.0,
+        "median_not_flagged": 12.0,
+        "cliffs_delta": -0.7763,
+        "separation": "large"
+      },
+      {
+        "feature": "spo2_std",
+        "median_flagged": 0.5304,
+        "median_not_flagged": 0.0,
+        "cliffs_delta": 0.7113,
+        "separation": "large"
+      },
+      {
+        "feature": "spo2_mean",
+        "median_flagged": 99.54,
+        "median_not_flagged": 100.0,
+        "cliffs_delta": -0.6086,
+        "separation": "large"
+      },
+      {
+        "feature": "hr_max",
+        "median_flagged": 106.5,
+        "median_not_flagged": 82.0,
+        "cliffs_delta": 0.503,
+        "separation": "large"
+      },
+      {
+        "feature": "rr_std",
+        "median_flagged": 3.3693,
+        "median_not_flagged": 0.0,
+        "cliffs_delta": 0.4581,
+        "separation": "medium"
+      },
+      {
+        "feature": "hr_std",
+        "median_flagged": 2.9214,
+        "median_not_flagged": 1.756,
+        "cliffs_delta": 0.366,
+        "separation": "medium"
+      },
+      {
+        "feature": "spo2_max",
+        "median_flagged": 100.0,
+        "median_not_flagged": 100.0,
+        "cliffs_delta": -0.3034,
+        "separation": "small"
+      },
+      {
+        "feature": "spo2_delta",
+        "median_flagged": -0.1434,
+        "median_not_flagged": 0.0,
+        "cliffs_delta": -0.2367,
+        "separation": "small"
+      },
+      {
+        "feature": "hr_mean",
+        "median_flagged": 95.6433,
+        "median_not_flagged": 75.9667,
+        "cliffs_delta": 0.183,
+        "separation": "small"
+      },
+      {
+        "feature": "rr_max",
+        "median_flagged": 20.5,
+        "median_not_flagged": 14.0,
+        "cliffs_delta": 0.1741,
+        "separation": "small"
+      },
+      {
+        "feature": "hr_min",
+        "median_flagged": 91.5,
+        "median_not_flagged": 71.0,
+        "cliffs_delta": 0.1564,
+        "separation": "small"
+      },
+      {
+        "feature": "rr_delta",
+        "median_flagged": 0.0,
+        "median_not_flagged": 0.0,
+        "cliffs_delta": -0.1133,
+        "separation": "negligible"
+      },
+      {
+        "feature": "hr_delta",
+        "median_flagged": -0.2124,
+        "median_not_flagged": 0.28,
+        "cliffs_delta": 0.0213,
+        "separation": "negligible"
+      },
+      {
+        "feature": "rr_mean",
+        "median_flagged": 13.2367,
+        "median_not_flagged": 13.0,
+        "cliffs_delta": 0.0059,
+        "separation": "negligible"
+      }
+    ],
+    "context_features_not_model_inputs": [
+      {
+        "feature": "spo2_coverage_pct",
+        "median_flagged": 100.0,
+        "median_not_flagged": 100.0,
+        "cliffs_delta": -0.0472,
+        "separation": "negligible"
+      },
+      {
+        "feature": "hr_coverage_pct",
+        "median_flagged": 100.0,
+        "median_not_flagged": 100.0,
+        "cliffs_delta": 0.0331,
+        "separation": "negligible"
+      },
+      {
+        "feature": "rr_coverage_pct",
+        "median_flagged": 100.0,
+        "median_not_flagged": 100.0,
+        "cliffs_delta": -0.0307,
+        "separation": "negligible"
+      }
+    ]
+  },
+  "flagged_class_evidence_composition": {
+    "flagged_windows_described": 14,
+    "mean_shift_only": 4,
+    "dispersion_only": 7,
+    "both": 3,
+    "neither": 0,
+    "note": "Composition of the flagged class by interpretable evidence flag. Descriptive only: the evidence flags are a separate rule, not a reference label, so this is not a correctness check."
+  }
+}
