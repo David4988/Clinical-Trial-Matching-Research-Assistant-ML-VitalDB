@@ -120,6 +120,58 @@ python -m venv .venv && .venv/bin/pip install -r requirements.txt
 The reconnaissance and aggregation stages fetch from the public VitalDB API on first
 run and cache payloads under `data/raw/`; everything downstream is offline.
 
+## Deploying the synthetic model
+
+The synthetic-trial detector in `synthetic_trial/` is no longer only a source of
+reports. It serialises to a versioned artifact that the monitoring application loads
+and scores live windows with — the application never retrains, and no training code
+crosses the boundary.
+
+```bash
+.venv/bin/python train_model_artifact.py        # fit + serialise + self-verify
+.venv/bin/python export_inference_fixtures.py   # parity fixture for the application
+```
+
+`train_model_artifact.py` calls the same `synthetic_trial/src/model.py` functions the
+evaluation pipeline calls — it does not reimplement training — so the serialised
+estimator is by construction the one the reports describe: the STABLE + IMPROVING
+training cohort, `contamination = 0.10`, `random_state = 42`, no scaling. It then
+reloads what it wrote and refuses to finish unless the reloaded model reproduces the
+fitted scores exactly.
+
+Two files come out of it:
+
+```
+synthetic_trial/artifacts/
+├── synthetic_isolation_forest.joblib   the fitted estimator
+└── synthetic_isolation_forest.json     the contract it must be used under
+```
+
+The JSON is the authoritative half. It carries the model version, the **ordered**
+feature names, the estimator configuration and resolved `offset_`, the training-cohort
+definition and seed, the scoring convention, the build environment, and a SHA-256 of
+the binary beside it. `load_artifact()` — and the application's own loader — check the
+feature order and the checksum before scoring, because a permuted feature vector scores
+perfectly happily and is wrong everywhere.
+
+The deployment feature vector is exactly:
+
+```
+heart_rate  spo2  respiratory_rate  heart_rate_delta  spo2_delta  respiratory_rate_delta
+```
+
+Deploy by copying the pair into the application:
+
+```bash
+cp synthetic_trial/artifacts/synthetic_isolation_forest.{joblib,json} \
+   ../Clinical-Trial-Matching---Research-Assistant/backend/app/synthetic/artifacts/
+```
+
+The application then verifies agreement rather than assuming it: 56 held-out evaluation
+windows across all seven scenarios are scored on both sides and compared feature by
+feature. Current result is bit-for-bit identical, zero label disagreements, despite the
+two repositories running different interpreters.
+
 ## Known limitations
 
 - **Four cases.** "Unusual" means unusual relative to these four. Case 4 supplies half

@@ -1,0 +1,103 @@
+{
+  "model_version": "synthetic_if_v1",
+  "feature_version": "synthetic_features_v1",
+  "created_at": "2026-08-17T06:35:20.456684+00:00",
+  "estimator": {
+    "class": "sklearn.ensemble.IsolationForest",
+    "n_estimators": 100,
+    "contamination": 0.1,
+    "random_state": 42,
+    "max_samples": "auto",
+    "bootstrap": false,
+    "n_jobs": 1,
+    "offset_": -0.511034680506945,
+    "max_samples_": 256
+  },
+  "features": {
+    "names": [
+      "heart_rate",
+      "spo2",
+      "respiratory_rate",
+      "heart_rate_delta",
+      "spo2_delta",
+      "respiratory_rate_delta"
+    ],
+    "count": 6,
+    "dtype": "float64",
+    "preprocessing": "none",
+    "delta_definition": "delta[t] = value[t] - value[t-1] for consecutive monitoring windows of the same patient, rounded to 4 decimals. A window with no valid predecessor has no delta and MUST NOT be scored.",
+    "window_minutes": 5
+  },
+  "scoring": {
+    "anomaly_score": "negated_decision_function",
+    "anomaly_score_note": "anomaly_score = round(-model.decision_function(X), 6); higher means more unusual.",
+    "decimals": 6,
+    "predicted_anomaly": "1 when model.predict(X) == -1, else 0"
+  },
+  "training_cohort": {
+    "source": "synthetic_trial/data/observations.csv",
+    "selection": "Patients in the deterministic training half of the split whose scenario label is STABLE or IMPROVING. Rows missing any of the six features (the first window of every patient) are dropped.",
+    "scenarios": [
+      "STABLE",
+      "IMPROVING"
+    ],
+    "split": {
+      "strategy": "patient-level, numpy default_rng shuffle",
+      "train_ratio": 0.5,
+      "seed": 42
+    },
+    "random_seed": 42,
+    "contamination": 0.1,
+    "total_patients": 500,
+    "train_patients": 250,
+    "eval_patients": 250,
+    "cohort_patients": 102,
+    "cohort_windows": 14688,
+    "fitted_rows": 14586,
+    "evaluation_half_used_in_fit": false
+  },
+  "training_matrix": {
+    "rows": 14586,
+    "columns": 6,
+    "feature_means": [
+      74.396757,
+      94.771534,
+      16.922103,
+      -0.022261,
+      0.010736,
+      -0.011442
+    ],
+    "feature_stds": [
+      8.555434,
+      0.781709,
+      2.592203,
+      3.821047,
+      0.636277,
+      1.90809
+    ],
+    "feature_mins": [
+      44.5,
+      91.4,
+      7.8,
+      -16.5,
+      -2.7,
+      -8.0
+    ],
+    "feature_maxes": [
+      107.0,
+      96.8,
+      27.1,
+      15.0,
+      2.7,
+      7.2
+    ]
+  },
+  "environment": {
+    "python": "3.14.5",
+    "sklearn": "1.9.0",
+    "numpy": "2.5.2",
+    "joblib": "1.5.3"
+  },
+  "model_file": "synthetic_isolation_forest.joblib",
+  "model_sha256": "8114caf6302beebe09d3e107a913ce27530c3d062862d98612df4e08e5f641a2"
+}
